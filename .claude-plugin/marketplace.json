@@ -1,0 +1,10 @@
+{
+  "name": "pb-claude-marketplace",
+  "version": "0.0.1",
+  "description": "A marketplace for personalClaude plugins",
+  "owner": {
+    "name": "Piotr Bienias",
+    "email": "pa.bienias@gmail.com"
+  },
+  "plugins": []
+}
