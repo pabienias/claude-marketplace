@@ -3,6 +3,7 @@ name: context-discovery
 description: Gathers and validates context for a task or ticket before implementation planning. Produces context-discovery.md with a planning readiness status.
 when_to_use: Use when the user gives a ticket, task or feature description and wants to start work, or asks to prepare, analyze or discover context before planning. Do not use for planning or coding itself, or when the user only asks a question about the code.
 argument-hint: "[ticket key | file path | task text] [extra context, links, files]"
+tools: Read, Grep, Glob, Agent, ToolSearch, Bash(jq:*), Bash(grep:*), Bash(sed:*), Bash(head:*)
 ---
 
 # Context Discovery
