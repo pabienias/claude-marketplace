@@ -11,9 +11,7 @@ Tools for the Software Development Lifecycle: planning, implementation, review a
 
 ## Contents
 
-Empty for now. Components are added at the plugin root, next to `.claude-plugin/`:
-
-- `skills/<name>/SKILL.md`
-- `agents/<name>.md`
-- `hooks/hooks.json`
-- `.mcp.json`
+| Component | Type | Purpose |
+|---|---|---|
+| `sdlc:context-discovery` | skill | Gathers task context, sets a planning readiness status, writes `.ai/dev/<name>/context-discovery.md` after approval. Does not plan. |
+| `sdlc:codebase-context-scanner` | agent | Read-only repository scan used by `context-discovery`. |
