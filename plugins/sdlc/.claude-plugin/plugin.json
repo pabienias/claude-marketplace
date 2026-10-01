@@ -1,0 +1,10 @@
+{
+  "name": "sdlc",
+  "version": "0.0.1",
+  "description": "Tools for the Software Development Lifecycle: planning, implementation, review and delivery",
+  "author": {
+    "name": "Piotr Bienias",
+    "email": "pa.bienias@gmail.com"
+  },
+  "keywords": ["sdlc", "workflow", "development"]
+}
