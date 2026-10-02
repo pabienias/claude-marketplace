@@ -3,7 +3,7 @@ name: context-discovery
 description: Gathers and validates context for a task or ticket before implementation planning. Produces context-discovery.md with a planning readiness status.
 when_to_use: Use when the user gives a ticket, task or feature description and wants to start work, or asks to prepare, analyze or discover context before planning. Do not use for planning or coding itself, or when the user only asks a question about the code.
 argument-hint: "[ticket key | file path | task text] [extra context, links, files]"
-allowed-tools: Read, Grep, Glob, Agent, ToolSearch, Bash(jq:*), Bash(grep:*), Bash(sed:*), Bash(head:*)
+allowed-tools: Read, Grep, Glob, Agent, ToolSearch, AskUserQuestion, Bash(jq:*), Bash(grep:*), Bash(sed:*), Bash(head:*)
 ---
 
 # Context Discovery
@@ -53,8 +53,9 @@ Higher source wins over lower. Flag conflicts between sources.
    - conflicting inputs
    - guidelines or specs the work needs (coding, architecture, testing, domain). Do not assume them. Ask the user where they are.
 6. **Ask.** Ask the user what blocks or weakens planning, including doubts raised in Challenge.
-   - Max 5 questions per round, ranked by impact on the plan.
-   - Prefer confirming questions ("I read X as Y. Correct?") over open ones.
+   - Ask with the `AskUserQuestion` tool, not as plain chat text. Use plain chat only when no sensible options exist.
+   - Max 4 questions per round (one tool call), ranked by impact on the plan.
+   - Prefer confirming questions ("I read X as Y. Correct?") over open ones. Offer likely answers as options and mark the best guess as recommended. The user can always answer with "Other".
    - Asking is mandatory when the task has no acceptance criteria or is too thin to plan from.
    - Never ask what the repository or provided inputs already answer.
    
