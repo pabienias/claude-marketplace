@@ -8,17 +8,11 @@ Structure of `context-discovery.md`. Keep every section. Write `none` if empty. 
 ## Request Summary
 - <1-3 bullets: what is requested and why>
 
-## Source Inputs
-- Task/ticket: <key, path or "pasted">
-- User context: <short list>
-- Files/links: <list; mark unreadable ones>
-- Repository materials used: <paths>
-
 ## Confirmed Facts
-- <fact> [source]
+- <fact> [n]
 
 ## Constraints / Requirements
-- <item> [source]
+- <item> [n]
 
 ## Assumptions
 - <assumption> (needs confirmation: yes/no)
@@ -39,4 +33,7 @@ Structure of `context-discovery.md`. Keep every section. Write `none` if empty. 
 - Status: Ready for planning | Partially ready | Not ready for planning
 - Reason: <one sentence>
 - Missing inputs: <list or none>
+
+## References
+- [1] <type: ticket | doc | link | file | repository | user answer> - <key, URL, `path:line` or "User, chat"> (mark unreadable ones)
 ```

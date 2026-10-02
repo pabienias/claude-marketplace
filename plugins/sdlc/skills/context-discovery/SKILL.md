@@ -18,7 +18,7 @@ Arguments: $ARGUMENTS
 
 - Task source: pasted text, file path, ticket key or URL.
 - For a ticket key or URL: fetch it with an available tool. If none exists, ask the user to paste it.
-- Read every file and link the user provides. If one is unreadable, record it under Source Inputs as unreadable.
+- Read every file and link the user provides. If one is unreadable, record it under References as unreadable.
 - If no task is given, ask for it.
 
 ## Source priority
@@ -36,7 +36,14 @@ Higher source wins over lower. Flag conflicts between sources.
 1. **Collect.** Read all inputs.
 2. **Detect mode.** Check the repository for source code and docs. If it has none or almost none, use greenfield mode: skip step 3, mark Likely Impacted Areas as `unknown (greenfield)`, and focus on goal, scope, constraints, acceptance criteria and open questions.
 3. **Scan repository.** If the task text is not enough to locate impacted areas, delegate to the `codebase-context-scanner` subagent. Pass: task summary, key terms, user-given paths. Keep the result as notes only.
-4. **Check gaps.** Verify each item below is known. If not, add it to Open Questions or Assumptions.
+4. **Challenge.** Do not accept inputs at face value. Look for:
+   - conflicts between sources
+   - vague wording (e.g. "improve", "support", "handle")
+   - claims the repository or links do not back up (e.g. a named component that does not exist)
+   - acceptance criteria that cannot be verified
+   
+   Check what the repository can answer before asking the user.
+5. **Check gaps.** Verify each item below is known and not just stated. If not, add it to Open Questions or Assumptions.
    - business goal
    - scope and non-goals
    - acceptance criteria
@@ -45,9 +52,15 @@ Higher source wins over lower. Flag conflicts between sources.
    - impacted areas
    - conflicting inputs
    - guidelines or specs the work needs (coding, architecture, testing, domain). Do not assume them. Ask the user where they are.
-5. **Ask.** Ask the user only what blocks or weakens planning. One batch per round, most important first. Apply the answers and re-check. If the user cannot answer, keep it as an open question. Do not loop.
-6. **Set status.** See Planning readiness.
-7. **Write.** See Output.
+6. **Ask.** Ask the user what blocks or weakens planning, including doubts raised in Challenge.
+   - Max 5 questions per round, ranked by impact on the plan.
+   - Prefer confirming questions ("I read X as Y. Correct?") over open ones.
+   - Asking is mandatory when the task has no acceptance criteria or is too thin to plan from.
+   - Never ask what the repository or provided inputs already answer.
+   
+   Apply the answers and re-check. If the user cannot answer, keep it as an open question. Do not loop.
+7. **Set status.** See Planning readiness.
+8. **Write.** See Output.
 
 ## Planning readiness
 
@@ -59,7 +72,8 @@ Status and a short reason are always required.
 
 ## Rules
 
-- Facts only in Confirmed Facts. Each fact names its source.
+- Facts only in Confirmed Facts. Each fact cites a reference `[n]`.
+- References: list every artefact used (tickets, docs, links, files, repositories) once, numbered in order of first use. Answers given by the user in chat are a reference too. For code use `path:line` or a link. Before writing, check that every `[n]` has an entry and every entry is cited.
 - Never present an assumption as a fact.
 - Do not invent missing information.
 - Repository signals are supporting evidence only.
@@ -70,9 +84,9 @@ Status and a short reason are always required.
 
 Read `${CLAUDE_PLUGIN_ROOT}/skills/context-discovery/template.md` and use its structure.
 
-1. Show the result in chat.
-2. Choose the directory name: ticket key, else name given by the user, else current branch name. If none applies, ask.
-3. Propose the path `.ai/dev/<name>/context-discovery.md`. If the file already exists, say it will be overwritten.
+1. Choose the directory name: ticket key, else name given by the user, else current branch name. If none applies, ask.
+2. Show a concise summary in chat. Do not print the whole file. Always include: status and reason, key confirmed facts, assumptions, risks, open questions, missing inputs.
+3. Propose the path `.ai/dev/<name>/context-discovery.md`. If the file already exists, say it will be overwritten. Say the user can ask for the full content before approving.
 4. Wait for user approval. Create no directory and write no file before approval.
 5. After approval, create the directory if needed and write the file.
-6. If the user declines, keep the result in chat only.
+6. If the user declines, keep the summary in chat only.
