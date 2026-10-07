@@ -33,8 +33,8 @@ Structure of `implementation-plan.md`. Keep every section. Write `none` if empty
 <1-2 sentences: what the user or system gains after this phase.>
 
 **Steps:**
-1. <small, reviewable change in business language> - Affected area: <module, layer, area or confirmed path>
-2. ...
+- [ ] <small, reviewable change in business language> - Affected area: <module, layer, area or confirmed path>
+- [ ] ...
 
 **Depends on:** <phase or step refs, or none>
 
