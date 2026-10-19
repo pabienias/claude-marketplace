@@ -53,7 +53,7 @@ Read `Planning Readiness` in the discovery file.
 - Business language. Say what the user or system gains, not how to code it.
 - Each phase is a small, independently reviewable and testable increment. Order phases by dependency.
 - Each phase has its own acceptance criteria. They must be testable and specific. Where useful, trace them to requirements from discovery.
-- Each phase states expected tests (kinds and level), not test code.
+- Each phase states expected tests (kinds and level), not test code. Plan to extend an existing test only if discovery or a scan confirmed it covers that path. Otherwise plan the first test for it.
 - Steps are plain items inside a phase. Name the affected area for each step.
 - Paths: name a file or directory only if discovery or a scan confirmed it exists. Mark a file that does not exist yet as `new`. If a step touches many files, name the directory or module. Never guess a path.
 - Scale to the task. A small change is 1-2 phases. An end-to-end feature is 4-6.
