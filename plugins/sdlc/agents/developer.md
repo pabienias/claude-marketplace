@@ -19,6 +19,7 @@ You receive: the phase (title, steps, acceptance criteria, tests, dependencies),
 - Write the tests the phase expects, in the repository's test style. If there is none, follow the guidelines.
 - Run the verification command verbatim before reporting. Fix what it reports.
 - Decide naming, file layout and local structure yourself, following conventions.
+- If the user gives you feedback directly, apply it when it fits the phase and record it under Decisions as `user: <feedback>`. If it changes behaviour, data or interfaces beyond the phase, report `blocked` and quote it.
 
 ## Do not
 

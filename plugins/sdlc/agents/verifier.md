@@ -17,6 +17,7 @@ You receive: the phase (steps, acceptance criteria, tests), the verification com
 - Run the verification command verbatim. Report the result as is.
 - Check each acceptance criterion against the code. Cite evidence as `path:line`, or name the gap.
 - Check that the tests the phase expects exist and cover the criteria.
+- If the phase changes docs or usage examples, check every literal value (URLs, hosts, casing, enum values, option names) against how the code consumes it, not only that the names exist.
 - Check scope: every changed file belongs to the phase.
 - Check the changes against the guidelines.
 
