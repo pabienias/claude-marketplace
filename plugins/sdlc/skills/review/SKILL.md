@@ -43,7 +43,7 @@ Arguments: $ARGUMENTS
 5. **Decide.** See Decisions.
 6. **Fix batches.** Group every item with decision `fix` into batches: by area, high first, each small enough for one commit. A batch has steps, acceptance criteria and tests like a plan phase, and lists the ids it closes.
 7. **Status.** `changes requested` if any item has decision `fix`. Else `approved`, or `approved with follow-ups` when `defer` or `owner` items remain. Write `defer` and `owner` items under Follow-ups. Add the round line.
-8. **Hand-off.** On `changes requested`: say to run `sdlc:implement` on `implementation-review.md`, then `sdlc:review` again. On approval: suggest updating project documentation.
+8. **Hand-off.** On `changes requested`: say to run `sdlc:implement` on `implementation-review.md`, then `sdlc:review` again. On approval: suggest updating project documentation, then `sdlc:submit` to create the MR/PR.
 
 ## Decisions
 
