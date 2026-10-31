@@ -26,8 +26,10 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 | Component | Type | Purpose |
 |---|---|---|
 | `onboarding:overview` | skill | Inventories the repository with the `repo-surveyor` and `docs-reader` agents, writes `overview.md` and `tech-stack.md` after approval. Documented facts only. Foundation for `product` and `architecture`. |
+| `onboarding:product` | skill | Writes `product-brief.md` after approval: purpose, actors, core and supportive areas, operations, external systems, scope, glossary, diagrams. Uses the `domain-analyst` agent. Runs `overview` first when `overview.md` is missing. |
 | `onboarding:repo-surveyor` | agent | Read-only inventory: units, signal files, stack, infrastructure, environment variable names. No source reads. Used by `overview`. |
 | `onboarding:docs-reader` | agent | Indexes repository docs and follows external links one level deep. One line per doc. Used by `overview`. |
+| `onboarding:domain-analyst` | agent | Product signals from docs, route and entity names and UI labels: actors, features, operations, external systems, terms. Tags inferences. Used by `product`. |
 | `references/scan-budget.md` | reference | Read tiers, caps and stop rules every agent follows. |
 | `references/signals.md` | reference | Where to look before reading source: signal files, never-read list, grep hints. |
 

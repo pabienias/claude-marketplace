@@ -1,0 +1,49 @@
+# Product Brief
+
+Structure of `product-brief.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[n]`. `(inferred)` on every claim whose evidence is names or structure. Cap: 120 lines.
+
+````md
+# Product Brief
+
+Generated from commit <sha> on <date>.
+
+## What it is
+- <1-3 bullets: purpose, users, value> [n]
+
+## Actors
+- <actor> - <what they do> [n]
+
+## Core features
+- <feature> - <one line> [n] (inferred)
+
+## Supportive areas
+- <area> - <one line> [n]
+
+## Core operations
+- <verb noun> - <trigger -> outcome> [n]
+
+## External systems
+- <system> - <role> [n]
+
+## Scope
+- In: <bullet per item> [n]
+- Out: <bullet per item, only when documented or stated by the user> [n]
+
+## Glossary
+- <term> - <meaning> [n]
+
+## Diagrams
+
+```mermaid
+flowchart LR
+  %% Context: actors, the product, external systems. At most 12 nodes. Labels are names only.
+```
+
+```mermaid
+flowchart TD
+  %% One core operation: trigger to outcome. At most 12 nodes.
+```
+
+## References
+- [1] <type: doc | link | file | user answer> - <`path`, URL or "User, chat"> (mark unreadable ones)
+````
