@@ -54,5 +54,5 @@ Read `${CLAUDE_PLUGIN_ROOT}/skills/overview/template.md` and use its structure.
 2. Propose the paths `.ai/onboarding/overview.md`, `.ai/onboarding/tech-stack.md` and `.ai/onboarding/open-questions.md`. Say which exist and will be overwritten. Say the user can ask for the full content before approving.
 3. Wait for approval. Create no directory and write no file before approval. If the caller already approved the directory, skip the wait.
 4. Write `overview.md` and `tech-stack.md`.
-5. `open-questions.md`: if missing, create it with the sections `## Overview`, `## Product`, `## Architecture`, each with `### Questions` and `### Follow-ups` set to `none`. Then overwrite only the `## Overview` section. Each question has one line on why it matters. Each follow-up is a fact with `[n]`.
+5. `open-questions.md`: if missing, create it with the sections `## Overview`, `## Product`, `## Architecture`, each with `### Questions` and `### Follow-ups` set to `none`. Then overwrite only the `## Overview` section. Each question has one line on why it matters. Each follow-up is a fact with its evidence path or URL.
 6. If the user declines, keep the summary in chat only.

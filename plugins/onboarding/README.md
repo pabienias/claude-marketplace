@@ -25,6 +25,7 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 
 | Component | Type | Purpose |
 |---|---|---|
+| `onboarding:onboard` | skill | Full run: intake, one Q&A round, one approval, then `overview`, `product` and `architecture`. Writes all five documents. |
 | `onboarding:overview` | skill | Inventories the repository with the `repo-surveyor` and `docs-reader` agents, writes `overview.md` and `tech-stack.md` after approval. Documented facts only. Foundation for `product` and `architecture`. |
 | `onboarding:product` | skill | Writes `product-brief.md` after approval: purpose, actors, core and supportive areas, operations, external systems, scope, glossary, diagrams. Uses the `domain-analyst` agent. Runs `overview` first when `overview.md` is missing. |
 | `onboarding:architecture` | skill | Writes `architecture.md` after approval: style, units and boundaries, module map with start-here paths, how a feature is added, cross-cutting concerns, deployment, diagram. Uses the `architecture-analyst` agent. Runs `overview` first when `overview.md` is missing. |
@@ -38,6 +39,10 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 ## Permissions
 
 Skills pre-approve read-only tools and `git ls-files`, `git rev-parse` and `git remote`. Writes to `.ai/onboarding/` follow your own permission settings. To reduce prompts, allow `Write(.ai/onboarding/**)` and `Edit(.ai/onboarding/**)`. `WebFetch` prompts per domain as usual. Agents inherit your settings.
+
+## Flow
+
+`onboard` runs everything: intake → Q&A → approval → `overview` → `product` → `architecture`. Each phase skill also runs alone; `product` and `architecture` run `overview` first when `overview.md` is missing. Each skill owns its documents and its section of `open-questions.md`.
 
 ## Rules
 
