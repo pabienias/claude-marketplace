@@ -1,0 +1,9 @@
+{
+  "name": "onboarding",
+  "description": "Project onboarding: tech stack, product brief, architecture and open questions from a read-only scan",
+  "author": {
+    "name": "Piotr Bienias",
+    "email": "pa.bienias@gmail.com"
+  },
+  "keywords": ["onboarding", "discovery", "architecture", "product"]
+}

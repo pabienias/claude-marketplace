@@ -10,6 +10,11 @@
       "name": "sdlc",
       "source": "./plugins/sdlc",
       "description": "Tools for the Software Development Lifecycle: planning, implementation, review and delivery"
+    },
+    {
+      "name": "onboarding",
+      "source": "./plugins/onboarding",
+      "description": "Project onboarding: tech stack, product brief, architecture and open questions from a read-only scan"
     }
   ]
 }
