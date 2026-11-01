@@ -19,9 +19,7 @@ Generated from commit <sha> on <date>.
 ## Module map
 | Product area | Where | Start here | Last change |
 |---|---|---|---|
-| <area from product-brief.md> | <paths> | <1-3 paths> | <date> <inactive> |
-
-`inactive` marks an area whose last change is more than 6 months before the repository's last commit.
+| <area from product-brief.md> | <paths> | <1-3 paths> | <date> |
 
 ## How a feature is added
 - <observed pattern, one line, from 2+ examples> [[n]](#references)

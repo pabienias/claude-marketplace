@@ -24,9 +24,9 @@ Generated from commit <sha> on <date>.
 ## Documentation
 | Doc | Covers | Relevant to | Last change |
 |---|---|---|---|
-| <path or URL> | <one line> | <product / tech / architecture / process> | <date> <possibly stale> |
+| <path or URL> | <one line> | <product / tech / architecture / process> | <date> |
 
-Unreadable links are listed with the reason. External links have no date. `possibly stale` marks a doc whose last change is more than 6 months before the last change of the code it describes.
+Unreadable links are listed with the reason. External links have no date.
 
 ## Read next
 - product-brief.md, glossary.md and architecture.md (run `onboarding:product` and `onboarding:architecture` if missing), tech-stack.md, open-questions.md

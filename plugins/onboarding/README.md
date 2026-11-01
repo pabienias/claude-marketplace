@@ -15,11 +15,11 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 
 | File | Content |
 |---|---|
-| `overview.md` | Entry point. What the product is, system boundary, units with last-change dates, where things are, documentation index with `possibly stale` markers. Documented facts only. |
+| `overview.md` | Entry point. What the product is, system boundary, units, where things are, documentation index. Last-change dates on units and docs. Documented facts only. |
 | `tech-stack.md` | Stack by layer, infrastructure, tooling, environment variables of interest. |
 | `product-brief.md` | Purpose, actors, core features, supportive areas, core operations, external systems, scope, diagrams. |
 | `glossary.md` | Domain terms, abbreviations and internal names with their meaning, or `meaning unknown`. |
-| `architecture.md` | System role and internal structure, units and boundaries, module map with `inactive` markers, how a feature is added, cross-cutting concerns, deployment, container and operation-path diagrams. |
+| `architecture.md` | System role and internal structure, units and boundaries, module map with last-change dates, how a feature is added, cross-cutting concerns, deployment, container and operation-path diagrams. |
 | `open-questions.md` | What could not be inferred, and observations, per phase. |
 
 ## Contents

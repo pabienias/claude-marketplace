@@ -27,7 +27,7 @@ Arguments: $ARGUMENTS
 3. **Delegate.** Run two agents in parallel. Do not pass one result to the other.
    - `repo-surveyor`: user-given context, reference paths.
    - `docs-reader`: external links from the user and the README, reference paths.
-4. **Dates.** `git log -1 --format=%cs` for the repository, then `git log -1 --format=%cs -- <path>` per unit and per repository doc. A doc is `possibly stale` when its date is more than 6 months before the last change of its unit, or of the repository for a root doc. Not a git repository: `unknown`.
+4. **Dates.** `git log -1 --format=%cs -- <path>` per unit and per repository doc. Dates only, no judgment; the reader compares. Not a git repository: `unknown`.
 5. **Synthesize.** Fill both templates.
    - `What it is` and `System boundary` come from docs and user answers only. Nothing documented: write `unknown` and add a question.
    - Units, stack, infrastructure, tooling and environment come from the surveyor. Versions only when pinned.

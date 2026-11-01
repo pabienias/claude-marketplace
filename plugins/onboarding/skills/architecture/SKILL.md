@@ -32,7 +32,7 @@ Arguments: $ARGUMENTS
    - Focus: "Which area will you work on first?" Options from units or areas, plus none.
    - System boundary, only when `overview.md` says `unknown`: "Is this repository the whole system?" Options: whole system, part of a larger system, I don't know.
 4. **Delegate.** Run `architecture-analyst` with: units, where things are, docs tagged `architecture` or `tech` with paths or URLs, product areas, the core operations (up to 3), focus area, reference paths.
-5. **Dates.** `git log -1 --format=%cs` for the repository. Per module map row, the most recent `git log -1 --format=%cs -- <path>` over its `Where` paths. A row is `inactive` when that date is more than 6 months before the repository's last commit. Not a git repository: `unknown`.
+5. **Dates.** Per module map row, the most recent `git log -1 --format=%cs -- <path>` over its `Where` paths. Dates only, no judgment. Not a git repository: `unknown`.
 6. **Synthesize.** Fill the template.
    - System role. What this repository is within the whole system. `System boundary` in `overview.md` comes first (documented), then the agent's runtime dependencies on other systems (inferred): environment names pointing at hosts, clients, topics, contracts, deployment siblings. Any of those makes the repository one part of a larger system, never a monolith. Weak evidence: `unclear` and a question.
    - Internal structure. Per unit, from the agent: by layer, by feature, flat, mixed. Weak evidence: `unclear`. Never pick a pattern name for completeness; "structured by feature" is a valid answer.
