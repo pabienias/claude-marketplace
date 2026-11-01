@@ -8,11 +8,12 @@ Structure of `architecture.md`. Keep every section. Write `none` if empty. Short
 Generated from commit <sha> on <date>.
 
 ## Style
-- <style | unclear> (confidence: high / medium / low) - <evidence, one line> [n]
+- System role: <whole system | one service of a larger system | library | frontend for a separate backend | infrastructure | monorepo of several deployables | unclear> (confidence: high / medium / low) - <evidence, one line> [n]
+- Internal structure: <unit>: <by layer | by feature | flat | mixed | unclear> (confidence) - <evidence, one line> [n]
 
 ## Units and boundaries
 - <unit> -> <unit> - <why it depends> [n]
-- <unit>: structured <by layer | by feature | flat | mixed> [n]
+- Depends on other systems: <system> - <signal: environment name, client, topic, contract, deployment> [n]
 - Shared code: <paths> [n]
 
 ## Module map
