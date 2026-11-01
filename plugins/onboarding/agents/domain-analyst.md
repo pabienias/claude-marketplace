@@ -1,6 +1,6 @@
 ---
 name: domain-analyst
-description: Read-only scan of product signals for onboarding - actors, features, core operations, external systems, domain terms - from docs, route and entity names and UI labels. Tags every inference. Used by onboarding:product. Reports only.
+description: Read-only scan of product signals for onboarding - actors, features, core operations, external systems, terms and abbreviations - from docs, route and entity names and UI labels. Tags every inference. Used by onboarding:product. Reports only.
 tools: Read, Glob, Grep, WebFetch, ToolSearch
 ---
 
@@ -18,7 +18,7 @@ You receive: units, where things are (paths for api, models, config, UI), docs t
 - Group related names into one feature. Infer actors from roles, permissions and UI areas. Infer operations from verb-noun names and event names.
 - Candidate `core` or `supportive` per feature, with the reason. Documented statements and user answers outrank structure signals.
 - External systems from environment variable names, client or integration directories, config.
-- Domain terms: recurring nouns in docs and names. Meaning only when documented.
+- Terms: recurring domain nouns, abbreviations (two to five capital letters in docs, names and routes), internal names of systems and units. Meaning only when documented, else `used in <path>`.
 - Source reads only within tier 5 of the budget and only to resolve a named uncertainty.
 
 ## Do not
@@ -42,8 +42,8 @@ Core operations:
 - <verb noun> - <trigger -> outcome> [evidence] (inferred?)
 External systems:
 - <system> - <role> [evidence]
-Domain terms:
-- <term> - <meaning | "used in <path>"> [evidence]
+Terms:
+- <term> - <kind: domain | abbreviation | system name> - <meaning | "used in <path>"> [evidence]
 Scope statements found in docs:
 - <in | out> - <statement, one line> [path]
 Patterns used:

@@ -1,6 +1,6 @@
 ---
 name: product
-description: Writes product-brief.md in .ai/onboarding/ - purpose, actors, core features, supportive areas, core operations, external systems, scope, glossary, two diagrams - from docs and a read-only scan by the domain-analyst agent. Runs onboarding:overview first when overview.md is missing.
+description: Writes product-brief.md and glossary.md in .ai/onboarding/ - purpose, actors, core features, supportive areas, core operations, external systems, scope, two diagrams, and a glossary of domain terms, abbreviations and internal names - from docs and a read-only scan by the domain-analyst agent. Runs onboarding:overview first when overview.md is missing.
 when_to_use: Use when the user asks what the product does, who uses it, what its core features or business areas are, or wants a product brief. Not for a question about one feature, and not for technical structure (onboarding:architecture).
 argument-hint: "[what the product is] [links, files, notes]"
 allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Skill, Bash(git rev-parse:*)
@@ -8,7 +8,7 @@ allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, S
 
 # Product Brief
 
-Describe the product: purpose, who uses it, what it does, what is core and what supports it. Output is `product-brief.md`. Inference is allowed here. Every inferred claim is tagged.
+Describe the product: purpose, who uses it, what it does, what is core and what supports it. Output is `product-brief.md` and `glossary.md`. Inference is allowed here. Every inferred claim is tagged.
 
 You MUST NOT describe technical structure, recommend anything, or edit outside `.ai/onboarding/`.
 
@@ -34,7 +34,7 @@ Arguments: $ARGUMENTS
 5. **Synthesize.** Fill the template.
    - Core vs supportive. Order of evidence: documented statement, user answer, structure signals (where routes and entities concentrate, names matching the product name). Typical supportive areas: authentication, billing unless billing is the product, notifications, administration, reporting, integrations.
    - Scope. `In` from docs, user answers and core features. `Out` only when a doc or the user states it. Never infer out of scope.
-   - Glossary. Terms from docs and entity names. Meaning only when documented, else `used in <path>`.
+   - Glossary. Domain terms, abbreviations and internal names of systems and units, from the agent's Terms. Alphabetical. A meaning from docs is documented. A meaning read from usage is `(inferred)`. No meaning found is `meaning unknown`. All unknown terms become one aggregated question in `open-questions.md`.
    - Diagrams. Context: actors, product, external systems. One core operation: trigger to outcome. Mermaid `flowchart`, at most 12 nodes each, labels are names only.
 6. **Challenge.** Drop every claim without evidence. Tag `(inferred)` where the evidence is names or structure. A feature with one weak signal becomes a question, not a feature. Check the agent's `Reads` line against the scan budget; a breach goes to Follow-ups.
 7. **Approve.** See Output.
@@ -53,9 +53,9 @@ Arguments: $ARGUMENTS
 
 Read `${CLAUDE_PLUGIN_ROOT}/skills/product/template.md` and use its structure.
 
-1. Show a concise summary in chat, at most 6 bullets: purpose, actors, core features, supportive areas, inferred share, questions.
-2. Propose the paths `.ai/onboarding/product-brief.md` and `.ai/onboarding/open-questions.md`. Say which exist and will be overwritten. Say the user can ask for the full content before approving.
+1. Show a concise summary in chat, at most 6 bullets: purpose, actors, core features, supportive areas, terms with unknown meaning, questions.
+2. Propose the paths `.ai/onboarding/product-brief.md`, `.ai/onboarding/glossary.md` and `.ai/onboarding/open-questions.md`. Say which exist and will be overwritten. Say the user can ask for the full content before approving.
 3. Wait for approval. Write nothing before approval. If the caller already approved the directory, skip the wait.
-4. Write `product-brief.md`.
+4. Write `product-brief.md` and `glossary.md`.
 5. `open-questions.md`: if missing, create it with the sections `## Overview`, `## Product`, `## Architecture`, each with `### Questions` and `### Follow-ups` set to `none`. Then overwrite only the `## Product` section. Each question has one line on why it matters. Each follow-up is a fact with its evidence path or URL.
 6. If the user declines, keep the summary in chat only.

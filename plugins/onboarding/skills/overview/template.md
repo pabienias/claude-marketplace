@@ -29,7 +29,7 @@ Generated from commit <sha> on <date>.
 Unreadable links are listed with the reason.
 
 ## Read next
-- product-brief.md and architecture.md (run `onboarding:product` and `onboarding:architecture` if missing), tech-stack.md, open-questions.md
+- product-brief.md, glossary.md and architecture.md (run `onboarding:product` and `onboarding:architecture` if missing), tech-stack.md, open-questions.md
 
 ## References
 - [1] <type: doc | link | file | user answer> - <`path`, URL or "User, chat"> (mark unreadable ones)

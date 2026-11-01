@@ -1,6 +1,6 @@
-# Product Brief
+# Product Brief and Glossary
 
-Structure of `product-brief.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[n]`. `(inferred)` on every claim whose evidence is names or structure. Cap: 120 lines.
+Structure of `product-brief.md` and `glossary.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[n]`. `(inferred)` on every claim whose evidence is names or structure. Caps: 120 lines for the brief, 80 for the glossary.
 
 ````md
 # Product Brief
@@ -29,9 +29,6 @@ Generated from commit <sha> on <date>.
 - In: <bullet per item> [n]
 - Out: <bullet per item, only when documented or stated by the user> [n]
 
-## Glossary
-- <term> - <meaning> [n]
-
 ## Diagrams
 
 ```mermaid
@@ -46,4 +43,19 @@ flowchart TD
 
 ## References
 - [1] <type: doc | link | file | user answer> - <`path`, URL or "User, chat"> (mark unreadable ones)
+````
+
+````md
+# Glossary
+
+Generated from commit <sha> on <date>.
+
+Terms, abbreviations and internal names specific to this product. Alphabetical.
+
+| Term | Meaning | Source |
+|---|---|---|
+| <term or abbreviation> | <meaning, or `meaning unknown`> | [n] (inferred) |
+
+## References
+- [1] <type: doc | link | file | user answer> - <`path`, URL or "User, chat">
 ````

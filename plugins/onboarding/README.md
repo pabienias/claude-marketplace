@@ -17,7 +17,8 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 |---|---|
 | `overview.md` | Entry point. What the product is, system boundary, units, where things are, documentation index. Documented facts only. |
 | `tech-stack.md` | Stack by layer, infrastructure, tooling, environment variables of interest. |
-| `product-brief.md` | Purpose, actors, core features, supportive areas, core operations, external systems, scope, glossary, diagrams. |
+| `product-brief.md` | Purpose, actors, core features, supportive areas, core operations, external systems, scope, diagrams. |
+| `glossary.md` | Domain terms, abbreviations and internal names with their meaning, or `meaning unknown`. |
 | `architecture.md` | Style, units and boundaries, module map, how a feature is added, cross-cutting concerns, deployment, diagram. |
 | `open-questions.md` | What could not be inferred, and observations, per phase. |
 
@@ -25,9 +26,9 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 
 | Component | Type | Purpose |
 |---|---|---|
-| `onboarding:onboard` | skill | Full run: intake, one Q&A round, one approval, then `overview`, `product` and `architecture`. Writes all five documents. |
+| `onboarding:onboard` | skill | Full run: intake, one Q&A round, one approval, then `overview`, `product` and `architecture`. Writes all six documents. |
 | `onboarding:overview` | skill | Inventories the repository with the `repo-surveyor` and `docs-reader` agents, writes `overview.md` and `tech-stack.md` after approval. Documented facts only. Foundation for `product` and `architecture`. |
-| `onboarding:product` | skill | Writes `product-brief.md` after approval: purpose, actors, core and supportive areas, operations, external systems, scope, glossary, diagrams. Uses the `domain-analyst` agent. Runs `overview` first when `overview.md` is missing. |
+| `onboarding:product` | skill | Writes `product-brief.md` and `glossary.md` after approval: purpose, actors, core and supportive areas, operations, external systems, scope, diagrams, terms and abbreviations. Uses the `domain-analyst` agent. Runs `overview` first when `overview.md` is missing. |
 | `onboarding:architecture` | skill | Writes `architecture.md` after approval: system role and internal structure, units and boundaries, module map with start-here paths, how a feature is added, cross-cutting concerns, deployment, diagram. Uses the `architecture-analyst` agent. Runs `overview` first when `overview.md` is missing. |
 | `onboarding:repo-surveyor` | agent | Read-only inventory: units, signal files, stack, infrastructure, environment variable names. No source reads. Used by `overview`. |
 | `onboarding:docs-reader` | agent | Indexes repository docs and follows external links one level deep. One line per doc. Used by `overview`. |
