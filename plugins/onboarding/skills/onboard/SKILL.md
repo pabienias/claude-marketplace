@@ -3,7 +3,7 @@ name: onboard
 description: Full project onboarding in one run - intake, a short Q&A, one approval, then onboarding:overview, onboarding:product and onboarding:architecture. Writes overview.md, tech-stack.md, product-brief.md, glossary.md, architecture.md and open-questions.md in .ai/onboarding/.
 when_to_use: Use when the user wants to be onboarded to the project, asks for a full project overview, or asks what the product is and how it is built. Not for a quick question about one file or feature. When only one document is wanted, use that phase skill instead.
 argument-hint: "[what the product is] [links, files, notes]"
-allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Skill, Bash(git ls-files:*), Bash(git rev-parse:*), Bash(git remote:*)
+allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Skill, Bash(git ls-files:*), Bash(git rev-parse:*), Bash(git remote:*), Bash(git log:*)
 ---
 
 # Onboard

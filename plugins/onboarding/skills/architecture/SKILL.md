@@ -3,7 +3,7 @@ name: architecture
 description: Writes architecture.md in .ai/onboarding/ - system role and internal structure, units and boundaries, product-to-code module map with start-here paths, how a feature is added, cross-cutting concerns, deployment, one diagram - from docs and a read-only scan by the architecture-analyst agent. Runs onboarding:overview first when overview.md is missing.
 when_to_use: Use when the user asks how the project is structured, what architecture style it has, where a product area lives in the code, or how features are typically added. Not for a question about one module's internals, and not for product scope (onboarding:product).
 argument-hint: "[focus area] [links, files, notes]"
-allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Skill, Bash(git rev-parse:*)
+allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Skill, Bash(git rev-parse:*), Bash(git log:*)
 ---
 
 # Architecture
@@ -32,16 +32,17 @@ Arguments: $ARGUMENTS
    - Focus: "Which area will you work on first?" Options from units or areas, plus none.
    - System boundary, only when `overview.md` says `unknown`: "Is this repository the whole system?" Options: whole system, part of a larger system, I don't know.
 4. **Delegate.** Run `architecture-analyst` with: units, where things are, docs tagged `architecture` or `tech` with paths or URLs, product areas, focus area, reference paths.
-5. **Synthesize.** Fill the template.
+5. **Dates.** `git log -1 --format=%cs` for the repository. Per module map row, the most recent `git log -1 --format=%cs -- <path>` over its `Where` paths. A row is `inactive` when that date is more than 6 months before the repository's last commit. Not a git repository: `unknown`.
+6. **Synthesize.** Fill the template.
    - System role. What this repository is within the whole system. `System boundary` in `overview.md` comes first (documented), then the agent's runtime dependencies on other systems (inferred): environment names pointing at hosts, clients, topics, contracts, deployment siblings. Any of those makes the repository one part of a larger system, never a monolith. Weak evidence: `unclear` and a question.
    - Internal structure. Per unit, from the agent: by layer, by feature, flat, mixed. Weak evidence: `unclear`. Never pick a pattern name for completeness; "structured by feature" is a valid answer.
-   - Module map. One row per product area. `Where` holds paths. `Start here` holds 1 to 3 paths, up to 5 for the focus area, whose row comes first.
+   - Module map. One row per product area. `Where` holds paths. `Start here` holds 1 to 3 paths, up to 5 for the focus area, whose row comes first. `Last change` holds the date from step 5.
    - How a feature is added. The observed pattern only, from 2 or more examples, with their paths. Describe, never instruct.
    - Deployment. Deployables and targets from `tech-stack.md` Infrastructure and the agent.
    - Diagram. Container level: units, data stores, queues, external systems, main edges. Mermaid `flowchart`, at most 12 nodes, labels are names only.
-6. **Challenge.** Drop every claim without evidence. Tag `(inferred)` where the evidence is names or structure. Search the draft for "should", "consider", "recommend", "better", "improve"; remove the sentence or turn it into a follow-up phrased as a fact. Check the agent's `Reads` line against the scan budget; a breach goes to Follow-ups.
-7. **Approve.** See Output.
-8. **Write.** See Output.
+7. **Challenge.** Drop every claim without evidence. Tag `(inferred)` where the evidence is names or structure. Search the draft for "should", "consider", "recommend", "better", "improve"; remove the sentence or turn it into a follow-up phrased as a fact. Check the agent's `Reads` line against the scan budget; a breach goes to Follow-ups.
+8. **Approve.** See Output.
+9. **Write.** See Output.
 
 ## Rules
 

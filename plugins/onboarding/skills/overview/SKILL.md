@@ -3,7 +3,7 @@ name: overview
 description: Inventories the repository with a read-only scan and writes overview.md and tech-stack.md in .ai/onboarding/ - units, stack, where things are, documentation index. Documented facts only. Foundation for onboarding:product and onboarding:architecture.
 when_to_use: Use when the user asks for a first overview of the repository, which units or packages it has, what the tech stack is, or where things are. Not for a quick dependency lookup or a question about one file.
 argument-hint: "[what the product is] [links, files, notes]"
-allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Bash(git ls-files:*), Bash(git rev-parse:*), Bash(git remote:*)
+allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Bash(git ls-files:*), Bash(git rev-parse:*), Bash(git remote:*), Bash(git log:*)
 ---
 
 # Overview
@@ -17,7 +17,7 @@ You MUST NOT analyse, infer, recommend or edit anything outside `.ai/onboarding/
 Arguments: $ARGUMENTS
 
 - Optional from the user: a product one-liner, links, files, notes. Record them as reference `User, chat`.
-- Called by `onboarding:onboard`: intake facts, Q&A answers and the approval are given. Skip steps 2, 6 and 7.
+- Called by `onboarding:onboard`: intake facts, Q&A answers and the approval are given. Skip steps 2, 7 and 8.
 - References: `${CLAUDE_PLUGIN_ROOT}/references/scan-budget.md` and `${CLAUDE_PLUGIN_ROOT}/references/signals.md`. Pass both absolute paths to every agent.
 
 ## Process
@@ -27,15 +27,16 @@ Arguments: $ARGUMENTS
 3. **Delegate.** Run two agents in parallel. Do not pass one result to the other.
    - `repo-surveyor`: user-given context, reference paths.
    - `docs-reader`: external links from the user and the README, reference paths.
-4. **Synthesize.** Fill both templates.
+4. **Dates.** `git log -1 --format=%cs` for the repository, then `git log -1 --format=%cs -- <path>` per unit and per repository doc. A doc is `possibly stale` when its date is more than 6 months before the last change of its unit, or of the repository for a root doc. Not a git repository: `unknown`.
+5. **Synthesize.** Fill both templates.
    - `What it is` and `System boundary` come from docs and user answers only. Nothing documented: write `unknown` and add a question.
    - Units, stack, infrastructure, tooling and environment come from the surveyor. Versions only when pinned.
    - Documentation comes from the docs reader, with its relevance tags. Unreadable links stay listed with the reason.
    - Drop every item without an evidence path. Check the `Reads` lines against the scan budget; a breach goes to Follow-ups.
-5. **Challenge.** Anything that needed reading source or interpreting names does not belong here. Move it to a question for `product` or `architecture`.
-6. **Ask.** Up to 2 questions with `AskUserQuestion`, one call, only when the product one-liner or a unit's kind is unclear. Every question has an "I don't know" option. "I don't know" becomes a question in `open-questions.md`.
-7. **Approve.** See Output.
-8. **Write.** See Output.
+6. **Challenge.** Anything that needed reading source or interpreting names does not belong here. Move it to a question for `product` or `architecture`.
+7. **Ask.** Up to 2 questions with `AskUserQuestion`, one call, only when the product one-liner or a unit's kind is unclear. Every question has an "I don't know" option. "I don't know" becomes a question in `open-questions.md`.
+8. **Approve.** See Output.
+9. **Write.** See Output.
 
 ## Rules
 

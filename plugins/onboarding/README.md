@@ -15,11 +15,11 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 
 | File | Content |
 |---|---|
-| `overview.md` | Entry point. What the product is, system boundary, units, where things are, documentation index. Documented facts only. |
+| `overview.md` | Entry point. What the product is, system boundary, units with last-change dates, where things are, documentation index with `possibly stale` markers. Documented facts only. |
 | `tech-stack.md` | Stack by layer, infrastructure, tooling, environment variables of interest. |
 | `product-brief.md` | Purpose, actors, core features, supportive areas, core operations, external systems, scope, diagrams. |
 | `glossary.md` | Domain terms, abbreviations and internal names with their meaning, or `meaning unknown`. |
-| `architecture.md` | Style, units and boundaries, module map, how a feature is added, cross-cutting concerns, deployment, diagram. |
+| `architecture.md` | System role and internal structure, units and boundaries, module map with `inactive` markers, how a feature is added, cross-cutting concerns, deployment, diagram. |
 | `open-questions.md` | What could not be inferred, and observations, per phase. |
 
 ## Contents
@@ -39,7 +39,7 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 
 ## Permissions
 
-Skills pre-approve read-only tools and `git ls-files`, `git rev-parse` and `git remote`. Writes to `.ai/onboarding/` follow your own permission settings. To reduce prompts, allow `Write(.ai/onboarding/**)` and `Edit(.ai/onboarding/**)`. `WebFetch` prompts per domain as usual. Agents inherit your settings.
+Skills pre-approve read-only tools and `git ls-files`, `git rev-parse`, `git remote` and `git log`. Writes to `.ai/onboarding/` follow your own permission settings. To reduce prompts, allow `Write(.ai/onboarding/**)` and `Edit(.ai/onboarding/**)`. `WebFetch` prompts per domain as usual. Agents inherit your settings.
 
 ## Flow
 

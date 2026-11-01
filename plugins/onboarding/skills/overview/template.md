@@ -14,19 +14,19 @@ Generated from commit <sha> on <date>.
 - <whole system | part of a larger system: other systems named in docs or by the user> [[n]](#references)
 
 ## Units
-| Unit | Path | Kind | Stack |
-|---|---|---|---|
-| <name> | <path> | <service / app / library / infra / docs> | <language, framework, one line> [[n]](#references) |
+| Unit | Path | Kind | Stack | Last change |
+|---|---|---|---|---|
+| <name> | <path> | <service / app / library / infra / docs> | <language, framework, one line> [[n]](#references) | <date> |
 
 ## Where things are
 - <unit>: entry <paths>; api <paths>; models <paths>; config <paths>; tests <paths>; docs <paths>
 
 ## Documentation
-| Doc | Covers | Relevant to |
-|---|---|---|
-| <path or URL> | <one line> | <product / tech / architecture / process> |
+| Doc | Covers | Relevant to | Last change |
+|---|---|---|---|
+| <path or URL> | <one line> | <product / tech / architecture / process> | <date> <possibly stale> |
 
-Unreadable links are listed with the reason.
+Unreadable links are listed with the reason. External links have no date. `possibly stale` marks a doc whose last change is more than 6 months before the last change of the code it describes.
 
 ## Read next
 - product-brief.md, glossary.md and architecture.md (run `onboarding:product` and `onboarding:architecture` if missing), tech-stack.md, open-questions.md
