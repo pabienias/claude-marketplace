@@ -8,7 +8,7 @@ You find how the project is structured from directory structure, manifests, docs
 
 ## Input
 
-You receive: units, where things are (paths for entry, api, models, config, tests), docs tagged `architecture` or `tech` (paths or URLs), product areas, an optional focus area, and the paths of `scan-budget.md` and `signals.md`. Read both references before anything else.
+You receive: units, where things are (paths for entry, api, models, config, tests), docs tagged `architecture` or `tech` (paths or URLs), product areas, the core operations to trace (up to 3), an optional focus area, and the paths of `scan-budget.md` and `signals.md`. Read both references before anything else.
 
 ## Do
 
@@ -20,6 +20,7 @@ You receive: units, where things are (paths for entry, api, models, config, test
 - Module map: per product area, find where it lives by names. Grep the area name and its synonyms in paths and route strings. Start here: the area's entry point, such as its route, controller or index file. At most 3 paths, 5 for the focus area.
 - Observed pattern for adding a feature: compare two or more feature directories or modules. Report the common shape only when at least two examples share it.
 - Cross-cutting: where authentication, persistence, messaging, configuration, observability and error handling live. Names first, entry points second.
+- Operation paths: trace each core operation from your brief across the system. Entry point, units crossed, data stores, external systems, outcome. From entry points, route names and names only. No feature internals. Say when two operations share a path.
 - Deployment: deployables and their targets from container files, orchestration, IaC and CI deploy jobs.
 - Entry points and composition roots: read within tier 5 of the budget to confirm wiring. No feature internals.
 
@@ -52,6 +53,8 @@ Observed pattern for adding a feature:
 - <pattern, one line> [evidence: 2+ examples]
 Cross-cutting:
 - <auth | persistence | messaging | config | observability | errors> - where: <paths>
+Operation paths:
+- <operation>: <entry> -> <unit or component> -> <data store or external system> -> <outcome> [evidence] (same path as <operation>?)
 Deployment:
 - <deployable> -> <target> [evidence]
 Patterns used:

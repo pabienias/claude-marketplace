@@ -32,10 +32,10 @@ Arguments: $ARGUMENTS
    - Core areas: "Which of these are core business?" Multi-select from up to 3 unit or top-level names, plus I don't know.
 4. **Delegate.** Run `domain-analyst` with: units, where things are, docs tagged `product` with paths or URLs, user answers, reference paths.
 5. **Synthesize.** Fill the template.
-   - Core vs supportive. Order of evidence: documented statement, user answer, structure signals (where routes and entities concentrate, names matching the product name). Typical supportive areas: authentication, billing unless billing is the product, notifications, administration, reporting, integrations.
+   - Core vs supportive. Order of evidence: documented statement, user answer, structure signals (where routes and entities concentrate, names matching the product name). Typical supportive areas: authentication, billing unless billing is the product, notifications, administration, reporting, integrations. Core operations are ordered by importance: documented emphasis, then user answer, then signal strength. More than 3 core operations means the classification is too loose; move the weakest to supportive or raise a question.
    - Scope. `In` from docs, user answers and core features. `Out` only when a doc or the user states it. Never infer out of scope.
    - Glossary. Domain terms, abbreviations and internal names of systems and units, from the agent's Terms. Alphabetical. A meaning from docs is documented. A meaning read from usage is `(inferred)`. No meaning found is `meaning unknown`. All unknown terms become one aggregated question in `open-questions.md`.
-   - Diagrams. Context: actors, product, external systems. One core operation: trigger to outcome. Mermaid `flowchart`, at most 12 nodes each, labels are names only.
+   - Diagrams. Context: actors, product, external systems. One flow per core operation, up to 3, at business level: nodes are actors, actions and outcomes. A node that names a component, endpoint, service or table belongs to `onboarding:architecture`; remove it. Mermaid `flowchart`, at most 12 nodes each, labels are names only.
 6. **Challenge.** Drop every claim without evidence. Tag `(inferred)` where the evidence is names or structure. A feature with one weak signal becomes a question, not a feature. Check the agent's `Reads` line against the scan budget; a breach goes to Follow-ups.
 7. **Approve.** See Output.
 8. **Write.** See Output.
@@ -47,7 +47,7 @@ Arguments: $ARGUMENTS
 - Never present an inference as documented. Never infer out of scope.
 - Do not copy documentation. Point to it.
 - Technology agnostic. No layers, patterns or module structure; that is `onboarding:architecture`.
-- Short. Bullets. No narrative. At most 120 lines.
+- Short. Bullets. No narrative. At most 120 lines, Mermaid blocks excluded.
 
 ## Output
 

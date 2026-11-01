@@ -1,6 +1,6 @@
 # Product Brief and Glossary
 
-Structure of `product-brief.md` and `glossary.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[[n]](#references)`. `(inferred)` on every claim whose evidence is names or structure. Caps: 120 lines for the brief, 80 for the glossary.
+Structure of `product-brief.md` and `glossary.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[[n]](#references)`. `(inferred)` on every claim whose evidence is names or structure. Caps: 120 lines for the brief, 80 for the glossary. Mermaid blocks do not count.
 
 ````md
 # Product Brief
@@ -20,7 +20,7 @@ Generated from commit <sha> on <date>.
 - <area> - <one line> [[n]](#references)
 
 ## Core operations
-- <verb noun> - <trigger -> outcome> [[n]](#references)
+- <verb noun, ordered by importance> - <trigger -> outcome> [[n]](#references)
 
 ## External systems
 - <system> - <role> [[n]](#references)
@@ -38,7 +38,7 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-  %% One core operation: trigger to outcome. At most 12 nodes.
+  %% One block per core operation, up to 3, at business level: actors, actions, outcomes. No components, endpoints, services or tables. At most 12 nodes each.
 ```
 
 ## References

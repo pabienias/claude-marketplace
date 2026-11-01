@@ -1,6 +1,6 @@
 # Architecture
 
-Structure of `architecture.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[[n]](#references)`. `(inferred)` on every claim whose evidence is names or structure. Cap: 150 lines.
+Structure of `architecture.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[[n]](#references)`. `(inferred)` on every claim whose evidence is names or structure. Cap: 150 lines. Mermaid blocks do not count.
 
 ````md
 # Architecture
@@ -34,11 +34,16 @@ Observed, not recommended.
 ## Deployment
 - <deployable> -> <target> [[n]](#references)
 
-## Diagram
+## Diagrams
 
 ```mermaid
 flowchart LR
   %% Container level: units, data stores, queues, external systems, main edges. At most 12 nodes. Labels are names only.
+```
+
+```mermaid
+sequenceDiagram
+  %% One block per distinct path of the core operations from product-brief.md (up to 3), or of the focus area. Operations sharing a path share one block, named on its title line. Actor, units, data stores and external systems crossed. At most 12 participants each.
 ```
 
 ## References

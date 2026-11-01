@@ -19,7 +19,7 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 | `tech-stack.md` | Stack by layer, infrastructure, tooling, environment variables of interest. |
 | `product-brief.md` | Purpose, actors, core features, supportive areas, core operations, external systems, scope, diagrams. |
 | `glossary.md` | Domain terms, abbreviations and internal names with their meaning, or `meaning unknown`. |
-| `architecture.md` | System role and internal structure, units and boundaries, module map with `inactive` markers, how a feature is added, cross-cutting concerns, deployment, diagram. |
+| `architecture.md` | System role and internal structure, units and boundaries, module map with `inactive` markers, how a feature is added, cross-cutting concerns, deployment, container and operation-path diagrams. |
 | `open-questions.md` | What could not be inferred, and observations, per phase. |
 
 ## Contents
@@ -50,4 +50,5 @@ Skills pre-approve read-only tools and `git ls-files`, `git rev-parse`, `git rem
 - Read-only outside `.ai/onboarding/`. No edits, no suggested changes. Observations go to `open-questions.md` as facts.
 - Every claim cites a reference as `[[n]](#references)`, a link to the document's References section. Claims inferred from names or structure are marked `(inferred)`.
 - Documentation is pointed to, never copied. External links are followed one level deep.
+- Line caps exclude Mermaid diagrams. Each diagram stays within 12 nodes for legibility.
 - Technology agnostic. `references/signals.md` holds the only technology names, as examples.

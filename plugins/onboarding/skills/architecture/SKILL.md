@@ -1,6 +1,6 @@
 ---
 name: architecture
-description: Writes architecture.md in .ai/onboarding/ - system role and internal structure, units and boundaries, product-to-code module map with start-here paths, how a feature is added, cross-cutting concerns, deployment, one diagram - from docs and a read-only scan by the architecture-analyst agent. Runs onboarding:overview first when overview.md is missing.
+description: Writes architecture.md in .ai/onboarding/ - system role and internal structure, units and boundaries, product-to-code module map with start-here paths, how a feature is added, cross-cutting concerns, deployment, two diagrams - from docs and a read-only scan by the architecture-analyst agent. Runs onboarding:overview first when overview.md is missing.
 when_to_use: Use when the user asks how the project is structured, what architecture style it has, where a product area lives in the code, or how features are typically added. Not for a question about one module's internals, and not for product scope (onboarding:product).
 argument-hint: "[focus area] [links, files, notes]"
 allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Skill, Bash(git rev-parse:*), Bash(git log:*)
@@ -20,7 +20,7 @@ Arguments: $ARGUMENTS
 - Foundation: `.ai/onboarding/overview.md`. If missing, say so and invoke `onboarding:overview` with the Skill tool first. It asks its own approval. Then continue.
 - Read from `overview.md`: System boundary, Units, Where things are, Documentation rows tagged `architecture` or `tech`.
 - Read from `tech-stack.md`: Infrastructure, for the Deployment section; Environment, for signals of other systems.
-- Read from `product-brief.md` if present: Core features and Supportive areas are the module map's areas. If missing, use unit and top-level directory names as areas and record a follow-up.
+- Read from `product-brief.md` if present: Core features and Supportive areas are the module map's areas; the Core operations (up to 3) are traced in the operation diagrams. If missing, use unit and top-level directory names as areas, trace the focus area instead, and record a follow-up.
 - Called by `onboarding:onboard`: intake facts, Q&A answers and the approval are given. Skip step 3 and the wait in Output.
 - References: `${CLAUDE_PLUGIN_ROOT}/references/scan-budget.md` and `${CLAUDE_PLUGIN_ROOT}/references/signals.md`. Pass both absolute paths to the agent.
 
@@ -31,7 +31,7 @@ Arguments: $ARGUMENTS
 3. **Ask.** Up to 2 questions with `AskUserQuestion`, one call, only for what the inputs leave open. Every question has an "I don't know" option, which becomes a question in `open-questions.md`.
    - Focus: "Which area will you work on first?" Options from units or areas, plus none.
    - System boundary, only when `overview.md` says `unknown`: "Is this repository the whole system?" Options: whole system, part of a larger system, I don't know.
-4. **Delegate.** Run `architecture-analyst` with: units, where things are, docs tagged `architecture` or `tech` with paths or URLs, product areas, focus area, reference paths.
+4. **Delegate.** Run `architecture-analyst` with: units, where things are, docs tagged `architecture` or `tech` with paths or URLs, product areas, the core operations (up to 3), focus area, reference paths.
 5. **Dates.** `git log -1 --format=%cs` for the repository. Per module map row, the most recent `git log -1 --format=%cs -- <path>` over its `Where` paths. A row is `inactive` when that date is more than 6 months before the repository's last commit. Not a git repository: `unknown`.
 6. **Synthesize.** Fill the template.
    - System role. What this repository is within the whole system. `System boundary` in `overview.md` comes first (documented), then the agent's runtime dependencies on other systems (inferred): environment names pointing at hosts, clients, topics, contracts, deployment siblings. Any of those makes the repository one part of a larger system, never a monolith. Weak evidence: `unclear` and a question.
@@ -39,7 +39,7 @@ Arguments: $ARGUMENTS
    - Module map. One row per product area. `Where` holds paths. `Start here` holds 1 to 3 paths, up to 5 for the focus area, whose row comes first. `Last change` holds the date from step 5.
    - How a feature is added. The observed pattern only, from 2 or more examples, with their paths. Describe, never instruct.
    - Deployment. Deployables and targets from `tech-stack.md` Infrastructure and the agent.
-   - Diagram. Container level: units, data stores, queues, external systems, main edges. Mermaid `flowchart`, at most 12 nodes, labels are names only.
+   - Diagrams. Container level: units, data stores, queues, external systems, main edges; Mermaid `flowchart`, at most 12 nodes. Core operations through the system: one diagram per distinct path from the agent's operation paths, up to 3; operations that share a path share one diagram, named on its title line; the focus area when the brief is missing. Mermaid `sequenceDiagram` or `flowchart`, at most 12 participants each. Labels are names only.
 7. **Challenge.** Drop every claim without evidence. Tag `(inferred)` where the evidence is names or structure. Search the draft for "should", "consider", "recommend", "better", "improve"; remove the sentence or turn it into a follow-up phrased as a fact. Check the agent's `Reads` line against the scan budget; a breach goes to Follow-ups.
 8. **Approve.** See Output.
 9. **Write.** See Output.
@@ -51,7 +51,7 @@ Arguments: $ARGUMENTS
 - Never present an inference as documented. `unclear` beats a guess.
 - Do not copy documentation. Point to it.
 - Technology agnostic. The project's own structure defines the vocabulary. No general-pattern advice, no conventions, no guidelines.
-- Short. Bullets. No narrative. At most 150 lines.
+- Short. Bullets. No narrative. At most 150 lines, Mermaid blocks excluded.
 
 ## Output
 
