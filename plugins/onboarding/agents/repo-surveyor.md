@@ -17,6 +17,7 @@ You receive: optional user-given context, and the paths of `scan-budget.md` and 
 - Per unit, from names and signal files only: ecosystem, manifest, entry points, API surface, data models, config, tests, docs.
 - Read fully: manifests, build and workspace config, runtime pins, container, orchestration and IaC, CI, environment examples.
 - Stack per unit from the manifest: language, framework, core libraries by role (at most 10), build, test and lint tooling. Versions only when pinned.
+- Organisation from `git remote get-url origin`. Internal dependencies: dependencies whose scope or group matches it, or that come from git or a private registry. Link from the manifest's `repository` or `homepage` field when present, else `no link found`.
 - Infrastructure from container, orchestration, IaC and CI files.
 - Environment variable names from environment examples and config. Names only, never values.
 
@@ -42,6 +43,8 @@ Stack:
 - <unit>: language <x>; framework <x> [path]; core libraries <name - role [path]>; build <x>; test <x>; lint <x>
 Infrastructure:
 - <container | orchestration | IaC | CI | deploy target> - <what> [path]
+Internal dependencies:
+- <name> - used by <unit> - <link | no link found> [path]
 Environment variables of interest (names only):
 - <NAME> - <what it hints at> [path]
 Reads: <n> signal files, <n> source files

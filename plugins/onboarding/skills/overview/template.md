@@ -28,6 +28,11 @@ Generated from commit <sha> on <date>.
 
 Unreadable links are listed with the reason. External links have no date.
 
+## Related repositories and systems
+| Name | Relation | Link |
+|---|---|---|
+| <name> | <dependency of <unit> / named in <doc> / deployment sibling> | <URL or `no link found`> [[n]](#references) |
+
 ## Read next
 - product-brief.md, glossary.md and architecture.md (run `onboarding:product` and `onboarding:architecture` if missing), tech-stack.md, open-questions.md
 

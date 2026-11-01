@@ -18,7 +18,7 @@ Arguments: $ARGUMENTS
 
 - Optional from the user: the area they will work on first (focus area), links, files, notes. Record them as reference `User, chat`.
 - Foundation: `.ai/onboarding/overview.md`. If missing, say so and invoke `onboarding:overview` with the Skill tool first. It asks its own approval. Then continue.
-- Read from `overview.md`: System boundary, Units, Where things are, Documentation rows tagged `architecture` or `tech`.
+- Read from `overview.md`: System boundary, Units, Where things are, Related repositories and systems, Documentation rows tagged `architecture` or `tech`.
 - Read from `tech-stack.md`: Infrastructure, for the Deployment section; Environment, for signals of other systems.
 - Read from `product-brief.md` if present: Core features and Supportive areas are the module map's areas; the Core operations (up to 3) are traced in the operation diagrams. If missing, use unit and top-level directory names as areas, trace the focus area instead, and record a follow-up.
 - Called by `onboarding:onboard`: intake facts, Q&A answers and the approval are given. Skip step 3 and the wait in Output.
@@ -34,7 +34,7 @@ Arguments: $ARGUMENTS
 4. **Delegate.** Run `architecture-analyst` with: units, where things are, docs tagged `architecture` or `tech` with paths or URLs, product areas, the core operations (up to 3), focus area, reference paths.
 5. **Dates.** Per module map row, the most recent `git log -1 --format=%cs -- <path>` over its `Where` paths. Dates only, no judgment. Not a git repository: `unknown`.
 6. **Synthesize.** Fill the template.
-   - System role. What this repository is within the whole system. `System boundary` in `overview.md` comes first (documented), then the agent's runtime dependencies on other systems (inferred): environment names pointing at hosts, clients, topics, contracts, deployment siblings. Any of those makes the repository one part of a larger system, never a monolith. Weak evidence: `unclear` and a question.
+   - System role. What this repository is within the whole system. `System boundary` and `Related repositories and systems` in `overview.md` come first (documented), then the agent's runtime dependencies on other systems (inferred): environment names pointing at hosts, clients, topics, contracts, deployment siblings. Any of those makes the repository one part of a larger system, never a monolith. Weak evidence: `unclear` and a question.
    - Internal structure. Per unit, from the agent: by layer, by feature, flat, mixed. Weak evidence: `unclear`. Never pick a pattern name for completeness; "structured by feature" is a valid answer.
    - Module map. One row per product area. `Where` holds paths. `Start here` holds 1 to 3 paths, up to 5 for the focus area, whose row comes first. `Last change` holds the date from step 5.
    - How a feature is added. The observed pattern only, from 2 or more examples, with their paths. Describe, never instruct.

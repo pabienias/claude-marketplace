@@ -16,7 +16,7 @@ You receive: external links given by the user, and the paths of `scan-budget.md`
 - Read each doc within the docs rule of the scan budget: fully when at most 300 lines, else headings and the first 100 lines.
 - Per doc: one-line "covers", relevance tags (`product`, `tech`, `architecture`, `process`), size.
 - Collect external links from the docs and from the user. Follow each once with an available tool: `WebFetch`, or a documentation platform tool found with `ToolSearch`. Read the linked page only. Never recurse. Same one-line "covers" and tags. Record unreadable links with the reason.
-- Note statements about other systems or repositories: one line each, with the doc path.
+- Note statements about other systems or repositories: one line each, with the doc path and the link when the doc gives one.
 
 ## Do not
 
@@ -36,7 +36,7 @@ Repository docs:
 External links:
 - <url> - found in <path | user> - covers: <one line> - relevant to: <...> | unreadable (<reason>)
 Statements about other systems or repositories:
-- <system> - <what the doc says it does, one line> [path]
+- <system> - <what the doc says it does, one line> - <link | no link> [path]
 Reads: <n> docs, <n> external pages
 Not found / unclear:
 - <item>

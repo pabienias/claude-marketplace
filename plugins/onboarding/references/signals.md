@@ -7,6 +7,7 @@ Where to look before reading any source file. Rules are technology agnostic. Exa
 | Category | Tells you | Examples |
 |---|---|---|
 | Dependency manifest | language, framework, libraries, unit boundary | `package.json`, `pyproject.toml`, `requirements.txt`, `go.mod`, `Cargo.toml`, `pom.xml`, `build.gradle(.kts)`, `*.csproj`, `Gemfile`, `composer.json`, `mix.exs`, `pubspec.yaml` |
+| Internal dependencies | related repositories | dependencies whose scope or group matches the repository's organisation (an `@org/` scope, a group id, a module path prefix), git or private-registry sources, path dependencies outside the repository; `repository` and `homepage` fields in manifests give the link |
 | Lockfile | confirms the ecosystem. Name only, never read | `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`, `poetry.lock`, `uv.lock`, `go.sum`, `Cargo.lock`, `Gemfile.lock`, `composer.lock` |
 | Build and workspace config | build tool, monorepo units | `tsconfig.json`, `vite.config.*`, `webpack.config.*`, `Makefile`, `CMakeLists.txt`, `settings.gradle(.kts)`, `nx.json`, `turbo.json`, `pnpm-workspace.yaml`, `lerna.json`, a `workspaces` field |
 | Runtime pins | language and tool versions | `.nvmrc`, `.node-version`, `.tool-versions`, `.python-version`, `.ruby-version`, `.java-version`, `runtime.txt` |

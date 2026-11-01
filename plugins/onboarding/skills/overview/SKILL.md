@@ -1,6 +1,6 @@
 ---
 name: overview
-description: Inventories the repository with a read-only scan and writes overview.md and tech-stack.md in .ai/onboarding/ - units, stack, where things are, documentation index. Documented facts only. Foundation for onboarding:product and onboarding:architecture.
+description: Inventories the repository with a read-only scan and writes overview.md and tech-stack.md in .ai/onboarding/ - units, stack, where things are, documentation index, related repositories and systems. Documented facts only. Foundation for onboarding:product and onboarding:architecture.
 when_to_use: Use when the user asks for a first overview of the repository, which units or packages it has, what the tech stack is, or where things are. Not for a quick dependency lookup or a question about one file.
 argument-hint: "[what the product is] [links, files, notes]"
 allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, ToolSearch, WebFetch, Bash(git ls-files:*), Bash(git rev-parse:*), Bash(git remote:*), Bash(git log:*)
@@ -32,6 +32,7 @@ Arguments: $ARGUMENTS
    - `What it is` and `System boundary` come from docs and user answers only. Nothing documented: write `unknown` and add a question.
    - Units, stack, infrastructure, tooling and environment come from the surveyor. Versions only when pinned.
    - Documentation comes from the docs reader, with its relevance tags. Unreadable links stay listed with the reason.
+   - Related repositories and systems come from the surveyor's internal dependencies, the docs reader's statements about other systems, and deployment siblings in infrastructure files. Link or `no link found`.
    - Drop every item without an evidence path. Check the `Reads` lines against the scan budget; a breach goes to Follow-ups.
 6. **Challenge.** Anything that needed reading source or interpreting names does not belong here. Move it to a question for `product` or `architecture`.
 7. **Ask.** Up to 2 questions with `AskUserQuestion`, one call, only when the product one-liner or a unit's kind is unclear. Every question has an "I don't know" option. "I don't know" becomes a question in `open-questions.md`.
@@ -51,7 +52,7 @@ Arguments: $ARGUMENTS
 
 Read `${CLAUDE_PLUGIN_ROOT}/skills/overview/template.md` and use its structure.
 
-1. Show a concise summary in chat, at most 6 bullets: what it is, units, main stack, docs found, unreadable links, questions.
+1. Show a concise summary in chat, at most 6 bullets: what it is, units, main stack, docs found, related repositories, unreadable links, questions.
 2. Propose the paths `.ai/onboarding/overview.md`, `.ai/onboarding/tech-stack.md` and `.ai/onboarding/open-questions.md`. Say which exist and will be overwritten. Say the user can ask for the full content before approving.
 3. Wait for approval. Create no directory and write no file before approval. If the caller already approved the directory, skip the wait.
 4. Write `overview.md` and `tech-stack.md`.

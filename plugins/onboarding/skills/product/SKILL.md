@@ -18,7 +18,7 @@ Arguments: $ARGUMENTS
 
 - Optional from the user: a product one-liner, links, files, notes. Record them as reference `User, chat`.
 - Foundation: `.ai/onboarding/overview.md`. If missing, say so and invoke `onboarding:overview` with the Skill tool first. It asks its own approval. Then continue.
-- Read from `overview.md`: What it is, System boundary, Units, Where things are, Documentation rows tagged `product`.
+- Read from `overview.md`: What it is, System boundary, Units, Where things are, Related repositories and systems, Documentation rows tagged `product`.
 - Called by `onboarding:onboard`: intake facts, Q&A answers and the approval are given. Skip step 3 and the wait in Output.
 - References: `${CLAUDE_PLUGIN_ROOT}/references/scan-budget.md` and `${CLAUDE_PLUGIN_ROOT}/references/signals.md`. Pass both absolute paths to the agent.
 
@@ -34,6 +34,7 @@ Arguments: $ARGUMENTS
 5. **Synthesize.** Fill the template.
    - Core vs supportive. Order of evidence: documented statement, user answer, structure signals (where routes and entities concentrate, names matching the product name). Typical supportive areas: authentication, billing unless billing is the product, notifications, administration, reporting, integrations. Core operations are ordered by importance: documented emphasis, then user answer, then signal strength. More than 3 core operations means the classification is too loose; move the weakest to supportive or raise a question.
    - Scope. `In` from docs, user answers and core features. `Out` only when a doc or the user states it. Never infer out of scope.
+   - External systems. From the agent. Add the link from `Related repositories and systems` in `overview.md` when the names match.
    - Glossary. Domain terms, abbreviations and internal names of systems and units, from the agent's Terms. Alphabetical. A meaning from docs is documented. A meaning read from usage is `(inferred)`. No meaning found is `meaning unknown`. All unknown terms become one aggregated question in `open-questions.md`.
    - Diagrams. Context: actors, product, external systems. One flow per core operation, up to 3, at business level: nodes are actors, actions and outcomes. A node that names a component, endpoint, service or table belongs to `onboarding:architecture`; remove it. Mermaid `flowchart`, at most 12 nodes each, labels are names only.
 6. **Challenge.** Drop every claim without evidence. Tag `(inferred)` where the evidence is names or structure. A feature with one weak signal becomes a question, not a feature. Check the agent's `Reads` line against the scan budget; a breach goes to Follow-ups.

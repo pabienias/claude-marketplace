@@ -15,7 +15,7 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 
 | File | Content |
 |---|---|
-| `overview.md` | Entry point. What the product is, system boundary, units, where things are, documentation index. Last-change dates on units and docs. Documented facts only. |
+| `overview.md` | Entry point. What the product is, system boundary, units, where things are, documentation index, related repositories and systems. Last-change dates on units and docs. Documented facts only. |
 | `tech-stack.md` | Stack by layer, infrastructure, tooling, environment variables of interest. |
 | `product-brief.md` | Purpose, actors, core features, supportive areas, core operations, external systems, scope, diagrams. |
 | `glossary.md` | Domain terms, abbreviations and internal names with their meaning, or `meaning unknown`. |
@@ -30,7 +30,7 @@ All files go to `.ai/onboarding/`, written only after approval. Nothing else in 
 | `onboarding:overview` | skill | Inventories the repository with the `repo-surveyor` and `docs-reader` agents, writes `overview.md` and `tech-stack.md` after approval. Documented facts only. Foundation for `product` and `architecture`. |
 | `onboarding:product` | skill | Writes `product-brief.md` and `glossary.md` after approval: purpose, actors, core and supportive areas, operations, external systems, scope, diagrams, terms and abbreviations. Uses the `domain-analyst` agent. Runs `overview` first when `overview.md` is missing. |
 | `onboarding:architecture` | skill | Writes `architecture.md` after approval: system role and internal structure, units and boundaries, module map with start-here paths, how a feature is added, cross-cutting concerns, deployment, diagram. Uses the `architecture-analyst` agent. Runs `overview` first when `overview.md` is missing. |
-| `onboarding:repo-surveyor` | agent | Read-only inventory: units, signal files, stack, infrastructure, environment variable names. No source reads. Used by `overview`. |
+| `onboarding:repo-surveyor` | agent | Read-only inventory: units, signal files, stack, infrastructure, internal dependencies with links, environment variable names. No source reads. Used by `overview`. |
 | `onboarding:docs-reader` | agent | Indexes repository docs and follows external links one level deep. One line per doc. Used by `overview`. |
 | `onboarding:domain-analyst` | agent | Product signals from docs, route and entity names and UI labels: actors, features, operations, external systems, terms. Tags inferences. Used by `product`. |
 | `onboarding:architecture-analyst` | agent | Structure signals from directories, manifests, docs and entry points: system role and structure candidates, dependencies on other systems, module map, observed feature pattern, cross-cutting, deployment. Tags inferences. Used by `architecture`. |
