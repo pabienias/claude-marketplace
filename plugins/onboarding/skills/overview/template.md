@@ -1,6 +1,6 @@
 # Overview and Tech Stack
 
-Structure of `overview.md` and `tech-stack.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[n]`. Cap: 100 lines each.
+Structure of `overview.md` and `tech-stack.md`. Keep every section. Write `none` if empty. Short bullets. Every fact cites `[[n]](#references)`. Cap: 100 lines each.
 
 ```md
 # Overview
@@ -8,15 +8,15 @@ Structure of `overview.md` and `tech-stack.md`. Keep every section. Write `none`
 Generated from commit <sha> on <date>.
 
 ## What it is
-- <1-3 bullets: purpose, users. From docs or the user only> [n]
+- <1-3 bullets: purpose, users. From docs or the user only> [[n]](#references)
 
 ## System boundary
-- <whole system | part of a larger system: other systems named in docs or by the user> [n]
+- <whole system | part of a larger system: other systems named in docs or by the user> [[n]](#references)
 
 ## Units
 | Unit | Path | Kind | Stack |
 |---|---|---|---|
-| <name> | <path> | <service / app / library / infra / docs> | <language, framework, one line> [n] |
+| <name> | <path> | <service / app / library / infra / docs> | <language, framework, one line> [[n]](#references) |
 
 ## Where things are
 - <unit>: entry <paths>; api <paths>; models <paths>; config <paths>; tests <paths>; docs <paths>
@@ -42,21 +42,21 @@ Generated from commit <sha> on <date>.
 
 ## Stack by layer
 - <unit, one block per unit when they differ>
-  - UI: <name - role> [n]
-  - API: <name - role> [n]
-  - Data: <name - role> [n]
-  - Messaging: <name - role> [n]
+  - UI: <name - role> [[n]](#references)
+  - API: <name - role> [[n]](#references)
+  - Data: <name - role> [[n]](#references)
+  - Messaging: <name - role> [[n]](#references)
 
 Versions only when pinned in a manifest.
 
 ## Infrastructure
-- <container | orchestration | IaC | deploy target> - <what> [n]
+- <container | orchestration | IaC | deploy target> - <what> [[n]](#references)
 
 ## Tooling
-- <build | test | lint | CI | runtime pin> - <what> [n]
+- <build | test | lint | CI | runtime pin> - <what> [[n]](#references)
 
 ## Environment
-- <VARIABLE_NAME> - <what it hints at> [n]
+- <VARIABLE_NAME> - <what it hints at> [[n]](#references)
 
 ## References
 - [1] <type: file | doc> - <`path`>

@@ -41,7 +41,7 @@ Arguments: $ARGUMENTS
 
 - Read-only outside `.ai/onboarding/`. Never edit other files. Never suggest changes; an observation becomes a follow-up, phrased as a fact.
 - Facts from signal files, docs and the user are documented. No `(inferred)` items in these two documents.
-- Every fact cites `[n]`. References list every artefact used once, numbered in order of first use. Before writing, check that every `[n]` has an entry and every entry is cited.
+- Every fact cites `[[n]](#references)`, a link to the References section. References list every artefact used once, numbered in order of first use. Before writing, check that every citation has an entry and every entry is cited.
 - Do not copy documentation. One line per doc.
 - Technology agnostic. The examples in `signals.md` are not a checklist.
 - Short. Bullets. No narrative. Each document at most 100 lines.

@@ -48,6 +48,6 @@ Skills pre-approve read-only tools and `git ls-files`, `git rev-parse` and `git 
 ## Rules
 
 - Read-only outside `.ai/onboarding/`. No edits, no suggested changes. Observations go to `open-questions.md` as facts.
-- Every claim cites a reference. Claims inferred from names or structure are marked `(inferred)`.
+- Every claim cites a reference as `[[n]](#references)`, a link to the document's References section. Claims inferred from names or structure are marked `(inferred)`.
 - Documentation is pointed to, never copied. External links are followed one level deep.
 - Technology agnostic. `references/signals.md` holds the only technology names, as examples.

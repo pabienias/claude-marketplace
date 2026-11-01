@@ -46,7 +46,7 @@ Arguments: $ARGUMENTS
 ## Rules
 
 - Read-only outside `.ai/onboarding/`. Never edit other files. Never suggest changes; an observation becomes a follow-up, phrased as a fact.
-- Every claim cites `[n]`. References list every artefact used once, numbered in order of first use. Before writing, check that every `[n]` has an entry and every entry is cited.
+- Every claim cites `[[n]](#references)`, a link to the References section. References list every artefact used once, numbered in order of first use. Before writing, check that every citation has an entry and every entry is cited.
 - Never present an inference as documented. `unclear` beats a guess.
 - Do not copy documentation. Point to it.
 - Technology agnostic. The project's own structure defines the vocabulary. No general-pattern advice, no conventions, no guidelines.

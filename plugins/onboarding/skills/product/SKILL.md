@@ -43,7 +43,7 @@ Arguments: $ARGUMENTS
 ## Rules
 
 - Read-only outside `.ai/onboarding/`. Never edit other files. Never suggest changes; an observation becomes a follow-up, phrased as a fact.
-- Every claim cites `[n]`. References list every artefact used once, numbered in order of first use. Before writing, check that every `[n]` has an entry and every entry is cited.
+- Every claim cites `[[n]](#references)`, a link to the References section. References list every artefact used once, numbered in order of first use. Before writing, check that every citation has an entry and every entry is cited.
 - Never present an inference as documented. Never infer out of scope.
 - Do not copy documentation. Point to it.
 - Technology agnostic. No layers, patterns or module structure; that is `onboarding:architecture`.
