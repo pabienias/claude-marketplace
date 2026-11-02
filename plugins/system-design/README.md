@@ -53,4 +53,4 @@ Skills pre-approve read-only tools, `AskUserQuestion`, `Skill`, `WebFetch` and `
 - The reviewer reads only the files. Amendments go through the owning skill. Two review rounds at most unless asked.
 - Mermaid diagrams only, at most 12 nodes each. Diagrams do not count toward line caps.
 - A PRD is input, never output. Without one, requirements are design-level and the charter says so.
-- When `.ai/onboarding/` docs exist they are read as a source. The plugin never runs `onboarding`.
+- Every source is passed by the user. To design a part of an existing system, pass the documents that describe it; the charter records them. Nothing in the repository is read unless named.

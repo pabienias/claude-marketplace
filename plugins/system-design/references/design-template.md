@@ -44,7 +44,7 @@ _Status: not started_
   - rounds: <n per phase>
 - Done when: <one line>
 - PRD: <path or link> | none - requirements are design-level, not a product specification
-- Existing system: <path to onboarding docs> | none
+- Existing system: <short names of the sources that describe it> | none
 
 <!-- section: context -->
 ## Context
@@ -114,7 +114,7 @@ sequenceDiagram
 | Item | Horizon | Why safe to defer |
 |---|---|---|
 ### Fit with the existing system
-- <only when onboarding docs exist: what is reused, what changes, path from the current state>
+- <only when the charter names an existing system: what is reused, what changes, path from the current state>
 
 <!-- section: next-steps -->
 ## Next steps
