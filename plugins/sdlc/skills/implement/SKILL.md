@@ -55,7 +55,8 @@ Run phases in plan order. Respect `Depends on`. For each phase:
 1. **Start.** Mark the phase `[in progress]`. Show its title, gain, steps, acceptance criteria and tests. Ask: start, or add notes first.
 2. **Develop.** Delegate to the `developer` agent. Pass: the phase text, the decisions, the paths to guidelines, discovery and extra context, the project skills, and the verification command. Use one developer agent per phase. Continue the same agent for fixes and pass it the findings.
    - On `blocked`: show the reason and the proposed alternative. Ask the user to decide. Record the decision in the summary. Continue the agent with it.
-   - A question, proposal or change you did not ask for, or a `user:` decision, may come from the user talking to the agent directly. Ask the user before answering it. Never overrule it from the plan.
+   - On `feedback`: the user answered one of the agent's tool calls directly. Show the User feedback block as it is. Ask the user: proceed as proposed, adjust, or stop. Record the decision in the summary as `user: <decision>`. Continue the same agent with it. Never answer for the user, and never overrule the feedback from the plan.
+   - A question, proposal or change you did not ask for in any other report also goes to the user before you answer it.
 3. **Verify.** Delegate to the `verifier` agent. Pass: the phase text, the verification command, the guideline paths, the project skills and the decisions. Do not pass the developer's report.
    - On `fail`: send the findings to the developer. Max 2 fix rounds, then ask the user.
 4. **Approve.** Show the developer's report, the verifier's report and the proposed commit message. Ask: approve and commit, request changes, or stop.

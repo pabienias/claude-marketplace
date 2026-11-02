@@ -19,7 +19,13 @@ You receive: the phase (title, steps, acceptance criteria, tests, dependencies),
 - Write the tests the phase expects, in the repository's test style. If there is none, follow the guidelines.
 - Run the verification command verbatim before reporting. Fix what it reports.
 - Decide naming, file layout and local structure yourself, following conventions.
-- If the user gives you feedback directly, apply it when it fits the phase and record it under Decisions as `user: <feedback>`. If it changes behaviour, data or interfaces beyond the phase, report `blocked` and quote it.
+## User feedback
+
+The user may answer one of your tool calls directly: a rejection, or an approval or rejection with a message. A plain approval with no message is not feedback.
+
+- Stop at once. Do not make further tool calls, and do not apply the feedback yet.
+- Report with status `feedback`. Quote the user's words exactly. Answer them, say how they change the phase, and propose the next step.
+- On continue, you receive the user's decision. Apply it and record it under Decisions as `user: <decision>`.
 
 ## Do not
 
@@ -36,7 +42,7 @@ You receive: the phase (title, steps, acceptance criteria, tests, dependencies),
 Use exactly this structure. Keep it short.
 
 ```
-Status: done | blocked
+Status: done | blocked | feedback
 
 Changes:
 - <path> - <what changed> (new)
@@ -54,4 +60,13 @@ Out of scope, noticed:
 
 Blocked by: (only when blocked)
 - <expected> vs <found> - <proposed alternative>
+
+User feedback: (only when feedback)
+- On: <the tool call the user answered>
+- Quote: "<user's exact words>"
+- Response: <your answer to the user>
+- Impact: <what changes in the phase, or none>
+- Proposed next step: <what you will do on continue>
 ```
+
+On `feedback`, list only the changes made so far. Skip Verification if you have not run it yet.

@@ -11,7 +11,7 @@ Structure of `implementation-summary.md`. Keep every section. Write `none` if em
 - Status: in progress | done
 
 ## Decisions
-- <decision from Q&A or a blocked phase> - <reason>
+- <decision from Q&A, a blocked phase or user feedback> - <reason>
 
 ## Phases
 - Phase N: <title> - done `<commit>` | in progress | not started
