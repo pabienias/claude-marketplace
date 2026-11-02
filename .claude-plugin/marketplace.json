@@ -15,6 +15,11 @@
       "name": "onboarding",
       "source": "./plugins/onboarding",
       "description": "Project onboarding: tech stack, product brief, architecture and open questions from a read-only scan"
+    },
+    {
+      "name": "system-design",
+      "source": "./plugins/system-design",
+      "description": "System design from draft notes: charter, requirements, architecture options, decisions and an independent review in one design document"
     }
   ]
 }

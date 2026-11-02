@@ -1,0 +1,9 @@
+{
+  "name": "system-design",
+  "description": "System design from draft notes: charter, requirements, architecture options, decisions and an independent review in one design document",
+  "author": {
+    "name": "Piotr Bienias",
+    "email": "pa.bienias@gmail.com"
+  },
+  "keywords": ["system-design", "architecture", "requirements", "design-document"]
+}
