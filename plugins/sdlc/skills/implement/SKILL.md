@@ -31,7 +31,7 @@ Arguments: $ARGUMENTS
 
 Check in this order. Collect what fails into questions for the Q&A.
 
-1. **Source.** Every phase or fix batch has steps, acceptance criteria and tests. No phase depends on an Open Question that is not `deferred`, or on an Assumption with `confirmed: no`.
+1. **Source.** A plan with `Status: draft` is not approved: stop and point to `sdlc:plan`. A plan with no status line counts as approved. Every phase or fix batch has steps, acceptance criteria and tests. No phase depends on an Open Question that is not `deferred`, or on an Assumption with `confirmed: no`.
 2. **Working tree.** It is clean. If not, ask right away: commit, stash or stop.
 3. **Verification command.** Find how the project verifies changes. Look in project docs (`CLAUDE.md`, README, contributing guide), then the manifest or build config (e.g. `package.json`, `Makefile`), then CI config. Prefer one command that runs everything. Never invent or narrow one. If none exists, ask.
 4. **Commit convention.** Detect it from repository config or docs, else from recent `git log`. Default: `<type>(<scope>): <summary>`.

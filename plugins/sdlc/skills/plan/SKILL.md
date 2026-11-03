@@ -3,7 +3,7 @@ name: plan
 description: Creates a phased implementation plan from the context discovery result. Runs a short Q&A to remove assumptions, then writes implementation-plan.md.
 when_to_use: Use when the user wants an implementation plan for a ticket, task or feature, or asks to plan the work, break it into phases or steps, or prepare it for implementation. Needs context-discovery.md from sdlc:context-discovery. Do not use for gathering context, writing code or implementing.
 argument-hint: "[path to context-discovery.md | feature name] [extra notes, links, files]"
-allowed-tools: Read, Glob, Grep, Agent, WebFetch, Bash(git branch:*)
+allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, WebFetch, Bash(git branch:*)
 ---
 
 # Implementation Plan
@@ -64,17 +64,25 @@ Read `Planning Readiness` in the discovery file.
 
 ## Output
 
-1. Show the plan in chat, with phase count.
-2. Use the directory of `context-discovery.md`. If it is not in `.ai/dev/`, use the ticket key, else the user's name, else the current branch name.
-3. Propose the path `<dir>/implementation-plan.md`. If the file exists, say it will be overwritten and offer to revise it instead.
-4. Wait for approval. Write no file before approval.
-5. If the user asks for changes, apply them, show the result and ask again.
-6. After approval, write the file.
-7. If the user declines, keep the plan in chat only.
+Do not show the full plan in chat. The user reviews it in the file.
+
+1. Use the directory of `context-discovery.md`. If it is not in `.ai/dev/`, use the ticket key, else the user's name, else the current branch name.
+2. The path is `<dir>/implementation-plan.md`. If the file exists, ask first: overwrite it, or revise it instead. Do not write before the answer.
+3. Write the plan to the file with `Status: draft`.
+4. Show a short summary in chat, at most ~20 lines:
+   - Path and phase count.
+   - Phases: one line each, title and gain.
+   - Key decisions from Q&A.
+   - Core changes: public contracts, integrations with other systems or dependencies, data or schema changes. Write `none` if there are none.
+   - Unconfirmed assumptions, top risks, open questions.
+5. Ask with `AskUserQuestion`: approve, request changes, or reject.
+6. On changes: apply them to the file, show only what changed, and ask again.
+7. On approve: set `Status: approved`.
+8. On reject: leave the file as `draft` and say so. `sdlc:implement` does not run a draft.
 
 ## Revising an existing plan
 
-On revise, read the existing plan and the new context. Propose only the changes, apply them after approval, and keep unchanged parts as they are.
+On revise, read the existing plan and the new context. Propose only the changes, apply them after approval, and keep unchanged parts as they are. Keep its status unless the user rejects the changes.
 
 ## Guideline attachments
 

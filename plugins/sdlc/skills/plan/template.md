@@ -5,6 +5,8 @@ Structure of `implementation-plan.md`. Keep every section. Write `none` if empty
 ```md
 # Implementation Plan: <feature name> (<ticket key if any>)
 
+Status: draft | approved
+
 ## Overview
 - <2-3 bullets: what is built and why>
 

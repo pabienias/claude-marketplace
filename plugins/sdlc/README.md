@@ -14,7 +14,7 @@ Tools for the Software Development Lifecycle: planning, implementation, review a
 | Component | Type | Purpose |
 |---|---|---|
 | `sdlc:context-discovery` | skill | Gathers task context, sets a planning readiness status, writes `.ai/dev/<name>/context-discovery.md` after approval. Does not plan. |
-| `sdlc:plan` | skill | Reads `context-discovery.md`, honours its readiness status, runs a short Q&A, writes `.ai/dev/<name>/implementation-plan.md` after approval. Does not code. |
+| `sdlc:plan` | skill | Reads `context-discovery.md`, honours its readiness status, runs a short Q&A, writes `.ai/dev/<name>/implementation-plan.md` as a draft, shows a short summary and marks the plan approved on approval. Does not code. |
 | `sdlc:implement` | skill | Reads `implementation-plan.md`, or the fix batches of `implementation-review.md`, runs a readiness gate and a short Q&A, implements phase by phase with the `developer` and `verifier` agents, commits one phase at a time after approval, writes `.ai/dev/<name>/implementation-summary.md`. Does not plan or review. |
 | `sdlc:review` | skill | Reads the summary, plan and discovery, reviews the finished implementation with the `requirements-reviewer` and `code-reviewer` agents, collects decisions per finding, writes `.ai/dev/<name>/implementation-review.md` with fix batches for `implement`. Does not change code. |
 | `sdlc:submit` | skill | Drafts the MR/PR title and description from the branch diff and the sdlc artifacts, shows them for approval, then pushes the branch and creates the MR/PR. Platform agnostic. Does not change code. |
