@@ -41,6 +41,7 @@ Higher source wins over lower. Flag conflicts between sources.
    - vague wording (e.g. "improve", "support", "handle")
    - claims the repository or links do not back up (e.g. a named component that does not exist)
    - acceptance criteria that cannot be verified
+   - user answers or proposed options that conflict with a guideline
    
    Check what the repository can answer before asking the user.
 5. **Check gaps.** Verify each item below is known and not just stated. If not, add it to Open Questions or Assumptions.
@@ -51,11 +52,13 @@ Higher source wins over lower. Flag conflicts between sources.
    - dependencies and integrations
    - impacted areas
    - conflicting inputs
-   - guidelines or specs the work needs (coding, architecture, testing, domain). Do not assume them. Ask the user where they are.
+   - guidelines or specs the work needs (coding, architecture, testing, domain). Read installed project skills that describe conventions first. Do not assume the rest. Ask the user where they are.
 6. **Ask.** Ask the user what blocks or weakens planning, including doubts raised in Challenge.
    - Ask with the `AskUserQuestion` tool, not as plain chat text. Use plain chat only when no sensible options exist.
    - Max 4 questions per round (one tool call), ranked by impact on the plan.
    - Prefer confirming questions ("I read X as Y. Correct?") over open ones. Offer likely answers as options and mark the best guess as recommended. The user can always answer with "Other".
+   - Check every option against the guidelines before recommending it. If an option deviates from one, say so in its description and name the guideline.
+   - If an answer is a question, answer it and ask again before recording it.
    - Asking is mandatory when the task has no acceptance criteria or is too thin to plan from.
    - Never ask what the repository or provided inputs already answer.
    

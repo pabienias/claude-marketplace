@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 Check a finished implementation in two tracks: does it do what was asked, and is the code sound. Output is `implementation-review.md`: findings, decisions and fix batches. The fixes themselves are done by `sdlc:implement`.
 
-Do not fix, plan or redesign. Do not reopen a decision recorded in the summary unless the user does.
+Do not fix, plan or redesign. Do not reopen a decision recorded in the summary unless the user does, or it conflicts with a guideline (see Rules).
 
 ## Preconditions
 
@@ -38,8 +38,8 @@ Arguments: $ARGUMENTS
    - `requirements-reviewer`: the paths to discovery, plan, summary and guidelines; ticket changes since discovery; base and branch; the reference implementation path.
    - `code-reviewer`: base and branch; the verification command; the paths to guidelines; the project skills; the decisions and deviations from the summary.
 2. **Gate.** If the verification command failed, set status `blocked`. Write the document with the gate result and one fix batch: make verification pass. Stop.
-3. **Cross-check.** Read the cited evidence of every `high` finding. Drop a finding that a requirement, a recorded decision or the reference implementation explains. Merge duplicates. Keep the `incompatible` mark the code reviewer set.
-4. **Write.** Create `implementation-review.md` next to the summary from `${CLAUDE_PLUGIN_ROOT}/skills/review/template.md`. Every decision is `open`. Show a short summary in chat: status, requirements not met, finding counts by severity, findings marked `incompatible`. The document holds the detail.
+3. **Cross-check.** Read the cited evidence of every `high` finding. Drop a finding that a requirement, a recorded decision or the reference implementation explains, unless it is marked `decided`. Merge duplicates. Keep the `incompatible` and `decided` marks the code reviewer set.
+4. **Write.** Create `implementation-review.md` next to the summary from `${CLAUDE_PLUGIN_ROOT}/skills/review/template.md`. Every decision is `open`. Show a short summary in chat: status, requirements not met, finding counts by severity, findings marked `incompatible` or `decided`. The document holds the detail.
 5. **Decide.** See Decisions.
 6. **Fix batches.** Group every item with decision `fix` into batches: by area, high first, each small enough for one commit. A batch has steps, acceptance criteria and tests like a plan phase, and lists the ids it closes.
 7. **Status.** `changes requested` if any item has decision `fix`. Else `approved`, or `approved with follow-ups` when `defer` or `owner` items remain. Write `defer` and `owner` items under Follow-ups. Add the round line.
@@ -47,7 +47,7 @@ Arguments: $ARGUMENTS
 
 ## Decisions
 
-- Recommend a decision per item: `fix`, `no action` or `defer`. A requirement that is not `met` is recommended `fix`. An item marked `incompatible` gets no recommendation; the user decides.
+- Recommend a decision per item: `fix`, `no action` or `defer`. A requirement that is not `met` is recommended `fix`. An item marked `incompatible` or `decided` gets no recommendation; the user decides.
 - Ask per severity group with `AskUserQuestion`: accept the recommendations, decide per id, or no action for the group. Per-id answers may come as chat text: `<id>: fix | no action | defer | owner <who>`, with an optional note.
 - Answer every per-id answer by its id before recording it. Push back once, with the reason, when it contradicts a requirement or a recorded decision. Then record what the user decided.
 - Carry the user's notes into the fix batch steps.
@@ -67,6 +67,6 @@ If `implementation-review.md` exists:
 - Technology agnostic. The project's guidelines, skills and surrounding code define the conventions. A project convention wins over a general pattern. The agents mark a fix that conflicts with a convention as `incompatible`; the user decides.
 - A behaviour change is never a code finding. It is a requirement gap or a follow-up.
 - A finding needs evidence as `path:line`. No evidence, no finding.
-- A decision recorded in the summary is a given. Report it only if the user reopens it.
+- A decision recorded in the summary is a given. Report it only if the user reopens it, or once, marked `decided`, when it conflicts with a guideline or a project skill.
 - Every question goes through `AskUserQuestion`. Per-id decisions may also come as chat text.
 - Short messages. Facts and `path:line`. No narration.

@@ -22,7 +22,7 @@ Tools for the Software Development Lifecycle: planning, implementation, review a
 | `sdlc:developer` | agent | Implements one phase: code and tests, runs the project's verification command. When you answer one of its tool calls directly, it stops and reports with status `feedback` before going on. Used by `implement`. Does not commit. |
 | `sdlc:verifier` | agent | Checks one implemented phase: verification command, acceptance criteria, tests, scope. Used by `implement`. Does not edit. |
 | `sdlc:requirements-reviewer` | agent | Checks the finished implementation against ticket, discovery, plan criteria, recorded decisions and an optional reference implementation. Used by `review`. Does not edit. |
-| `sdlc:code-reviewer` | agent | Runs the verification command, reviews the diff against the project's conventions first, marks fixes that conflict with them as `incompatible`. Used by `review`. Does not edit. |
+| `sdlc:code-reviewer` | agent | Runs the verification command, reviews the diff against the project's conventions first, marks fixes that conflict with them as `incompatible` and recorded decisions that conflict with them as `decided`. Used by `review`. Does not edit. |
 
 ## Permissions
 

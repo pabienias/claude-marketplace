@@ -43,6 +43,7 @@ Check in this order. Collect what fails into questions for the Q&A.
 - Ask only what blocks implementation. Do not re-ask what the plan decided.
 - For a review source, the review's decisions are given. Ask only if a batch is unclear.
 - Ask with `AskUserQuestion`. Max 4 questions per round. Give each a recommended answer with a short reason.
+- If an answer is a question, answer it and ask again before recording it.
 - Ask about behaviour, data, interfaces and test expectations. Decide naming, file layout and local structure yourself, following repository conventions.
 - If nothing blocks, say so in one line and go on. Do not ask permission to skip.
 - Show the setup: phase count, branch, verification command, commit convention, project skills, decisions. Wait for approval.

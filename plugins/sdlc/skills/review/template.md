@@ -21,7 +21,7 @@ Structure of `implementation-review.md`. Keep every section. Write `none` if emp
 ## Findings
 | Id | Area | Finding | Evidence | Proposed fix | Decision | Status |
 |---|---|---|---|---|---|---|
-| H1 | <area> | <one line> | `path:line` | <one line>; `incompatible: <convention>` when it conflicts | open \| fix \| no action \| defer \| owner <who> | open \| fixed `<commit>` \| rejected |
+| H1 | <area> | <one line> | `path:line` | <one line>; `incompatible: <convention>` when the fix conflicts; `decided: <decision>` when a decision conflicts with a convention | open \| fix \| no action \| defer \| owner <who> | open \| fixed `<commit>` \| rejected |
 
 Ids: `H` high, `M` medium, `L` low. Ids never change. New items continue the numbering.
 

@@ -41,7 +41,8 @@ Read `Planning Readiness` in the discovery file.
 
 - Start from the discovery Open Questions and Assumptions. Do not re-ask what discovery already confirmed.
 - Ask 3-5 questions per round. Group related ones.
-- Give each question a recommended answer with a short reason, so the user can approve or override.
+- Give each question a recommended answer with a short reason, so the user can approve or override. Check it against the guidelines first. If it deviates from one, say so and name the guideline.
+- If an answer is a question, answer it and ask again before recording it.
 - Cover what is still unknown: scope boundaries (MVP vs later), main flows, data, integrations, edge cases and failures, non-functional needs, test expectations, rollout.
 - Ask where the guidelines are (coding, architecture, testing) if discovery did not find them. Do not assume them. Record them under Guidelines to follow.
 - After each round, list the decisions made.
@@ -56,6 +57,7 @@ Read `Planning Readiness` in the discovery file.
 - Each phase states expected tests (kinds and level), not test code. Plan to extend an existing test only if discovery or a scan confirmed it covers that path. Otherwise plan the first test for it.
 - Steps are plain items inside a phase. Name the affected area for each step.
 - Paths: name a file or directory only if discovery or a scan confirmed it exists. Mark a file that does not exist yet as `new`. If a step touches many files, name the directory or module. Never guess a path.
+- Placement: where a step fixes a file location, a module boundary or naming, follow the guidelines. A deliberate deviation goes under Assumptions with its reason and the guideline it departs from (confirmed: no until the user confirms it).
 - Scale to the task. A small change is 1-2 phases. An end-to-end feature is 4-6.
 - Stay in scope. No refactors or adjacent work unless the feature requires them (or user asks explicitly).
 - Facts and instructions. Reasoning only where it is needed to understand a decision.

@@ -15,11 +15,11 @@ You receive: base and branch, the verification command, paths to guidelines, rel
 - Run the verification command verbatim first. Report the result as is. If it fails, report only that and stop.
 - Read the guidelines and the project skills before the code. They define the conventions. Where they are silent, apply general practice.
 - Run `git diff <base>...<branch>`. Read new files in full. Compare with how similar existing code in the repository does the same things.
-- Review for: single responsibility and size of units; readability; coupling between modules; presentation separated from logic; duplication; open to extension without change; naming consistent with the repository; error handling; dead code and unused exports.
+- Review for: placement of files and module boundaries; single responsibility and size of units; readability; coupling between modules; presentation separated from logic; duplication; open to extension without change; naming consistent with the repository; error handling; dead code and unused exports.
 - Review tests for: realistic scenarios, one per branch; no impossible states; no tests that restate the code or assert constants.
 - Each finding has a severity, evidence as `path:line` and a one-line fix. `high`: defect risk, or a convention violation that will spread. `medium`: maintainability. `low`: nit.
 - Compare each fix with the conventions. If a guideline, a project skill or the surrounding code does it differently, mark the finding `incompatible: <convention>` and keep it.
-- Drop a finding that a decision or deviation explains.
+- Drop a finding that a decision or deviation explains. Exception: if the decision itself conflicts with a guideline or a project skill, keep the finding once and mark it `decided: <decision>`.
 - Next round: check every finding marked `fixed` and report `confirmed` or `not fixed`. Review only the diff since the previous reviewed commit. Report only `high` findings and regressions. Continue the previous numbering.
 
 ## Do not
@@ -29,7 +29,7 @@ You receive: base and branch, the verification command, paths to guidelines, rel
 - Do not narrow, replace or skip the verification command.
 - Do not prefer a general pattern over a project convention.
 - Do not give language- or framework-specific advice that the project's guidelines do not back.
-- Do not report a decided deviation as a finding.
+- Do not report a decided deviation as a finding, except a decision that conflicts with a guideline or a project skill.
 - Do not report a guess as a fact.
 
 ## Output
@@ -43,7 +43,7 @@ Conventions used:
 - <guideline or skill> - <what it governs>
 
 Findings:
-- H1 | <area> | <finding> | <path:line> | fix: <one line> | incompatible: <convention> (only when it conflicts)
+- H1 | <area> | <finding> | <path:line> | fix: <one line> | incompatible: <convention> (only when the fix conflicts) | decided: <decision> (only when a decision conflicts with a convention)
 - M1 | ...
 - L1 | ...
 
