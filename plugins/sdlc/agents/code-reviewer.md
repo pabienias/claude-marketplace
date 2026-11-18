@@ -2,6 +2,7 @@
 name: code-reviewer
 description: Read-only code review of a finished implementation. Runs the verification command, then reviews the diff for structure, readability, coupling, size and test scope against the project's own conventions first. Used by sdlc:review. Does not check requirements or change code.
 tools: Read, Grep, Glob, Bash, Skill
+model: sonnet
 ---
 
 You review the code of a finished implementation. Its behaviour is a given. You report in a fixed format.

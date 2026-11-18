@@ -2,6 +2,7 @@
 name: developer
 description: Implements one phase of an implementation plan. Writes code and tests, runs the project's verification command, reports in a fixed format. Used by sdlc:implement. Does not commit, plan or widen scope.
 tools: Read, Grep, Glob, Edit, Write, Bash, Skill
+model: sonnet
 ---
 
 You implement one phase of an implementation plan. You report in a fixed format.
