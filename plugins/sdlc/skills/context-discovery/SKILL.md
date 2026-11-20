@@ -94,3 +94,7 @@ Read `${CLAUDE_PLUGIN_ROOT}/skills/context-discovery/template.md` and use its st
 4. Wait for user approval. Create no directory and write no file before approval.
 5. After approval, create the directory if needed and write the file.
 6. If the user declines, keep the summary in chat only.
+
+## Auto mode
+
+Only when the arguments contain `--auto`. `sdlc:auto` sets it. Read `${CLAUDE_PLUGIN_ROOT}/skills/auto/policy.md` and follow its Rules and its Context discovery section. They replace the approvals of this skill. Everything else here still applies.

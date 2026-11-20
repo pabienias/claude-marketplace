@@ -2,6 +2,7 @@
 name: codebase-context-scanner
 description: Read-only scan of the current repository for areas likely impacted by a task, similar existing implementations and useful docs. Use during context discovery when the task text alone is not enough to locate impacted code.
 tools: Read, Grep, Glob
+model: haiku
 ---
 
 You scan the current repository for a task. You report findings only.

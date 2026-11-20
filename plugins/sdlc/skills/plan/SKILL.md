@@ -54,6 +54,8 @@ Read `Planning Readiness` in the discovery file.
 - Business language. Say what the user or system gains, not how to code it.
 - Each phase is a small, independently reviewable and testable increment. Order phases by dependency.
 - Each phase has its own acceptance criteria. They must be testable and specific. Where useful, trace them to requirements from discovery.
+- Each phase states its evidence. `checks`: the verification command and the tests are enough. `runtime: <what to observe>`: the phase changes something a running system shows, such as a screen, an interface response, stored data or a call to another system. Name each state to observe.
+- Core changes: list every change to a public contract, an integration with another system or dependency, and data or schema. Write `none` if there are none.
 - Each phase states expected tests (kinds and level), not test code. Plan to extend an existing test only if discovery or a scan confirmed it covers that path. Otherwise plan the first test for it.
 - Steps are plain items inside a phase. Name the affected area for each step.
 - Paths: name a file or directory only if discovery or a scan confirmed it exists. Mark a file that does not exist yet as `new`. If a step touches many files, name the directory or module. Never guess a path.
@@ -75,7 +77,7 @@ Do not show the full plan in chat. The user reviews it in the file.
    - Path and phase count.
    - Phases: one line each, title and gain.
    - Key decisions from Q&A.
-   - Core changes: public contracts, integrations with other systems or dependencies, data or schema changes. Write `none` if there are none.
+   - Core changes: as in the plan's Core changes section.
    - Unconfirmed assumptions, top risks, open questions.
 5. Ask with `AskUserQuestion`: approve, request changes, or reject.
 6. On changes: apply them to the file, show only what changed, and ask again.
@@ -89,3 +91,7 @@ On revise, read the existing plan and the new context. Propose only the changes,
 ## Guideline attachments
 
 Only if a topic is too detailed for the plan but needed for implementation (for example an interface contract or data notes), create `<dir>/guidelines/<topic>.md`. Link it from the plan. Do not create attachments in advance. No code.
+
+## Auto mode
+
+Only when the arguments contain `--auto`. `sdlc:auto` sets it. Read `${CLAUDE_PLUGIN_ROOT}/skills/auto/policy.md` and follow its Rules and its Plan section. They replace the Q&A scope and the approval of this skill. Everything else here still applies.

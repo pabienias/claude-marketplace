@@ -1,6 +1,6 @@
 # MR/PR Description
 
-A starting point. Add, drop or adapt sections to fit the scope. Always keep Overview, Key changes and Worth testing. Write other sections only when they have content. Short bullets. No code.
+A starting point. Add, drop or adapt sections to fit the scope. Always keep Overview, Key changes, Worth testing and Verification. Write other sections only when they have content. Short bullets. No code.
 
 Title: the main commit subject, in the project's commit convention.
 
@@ -23,6 +23,14 @@ Title: the main commit subject, in the project's commit convention.
 
 ## Worth testing
 - <concrete scenario, including edge cases and failure paths; setup if needed>
+
+## Verification
+- Evidence: checks only | runtime | runtime with captures | not available: <reason>
+- <what was run and what was observed>
+
+## Automated run
+- <decision made by the auto policy that a reviewer should know>
+- Deferred: <id> - <item>
 
 ## Impact
 - <breaking change, migration, config or env change, feature flag, deploy order, dependent MR/PR, follow-up>

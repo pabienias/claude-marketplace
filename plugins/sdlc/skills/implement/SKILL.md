@@ -1,10 +1,9 @@
 ---
 name: implement
 description: Implements an approved implementation plan phase by phase, or the fix batches of an implementation review. Runs a readiness gate and a short Q&A, then for each phase delegates coding to the developer agent, checks the result with the verifier agent, and commits after user approval. Tracks progress in the source document and writes implementation-summary.md.
-when_to_use: Use when the user wants to implement, build or execute an implementation plan, apply the fix batches from sdlc:review, or resume an interrupted implementation. Needs implementation-plan.md from sdlc:plan or implementation-review.md from sdlc:review. Do not use for planning, for ad-hoc changes without a plan, or for code review.
+when_to_use: Use only when the user explicitly asks to implement, build or execute an implementation plan, apply the fix batches from sdlc:review, or resume an interrupted implementation, or when sdlc:auto runs it. Never start it on your own after planning or review. Needs implementation-plan.md from sdlc:plan or implementation-review.md from sdlc:review. Do not use for planning, for ad-hoc changes without a plan, or for code review.
 argument-hint: "[path to implementation-plan.md or implementation-review.md | feature name] [branch name, extra notes, links, files]"
 allowed-tools: Read, Glob, Grep, Agent, AskUserQuestion, WebFetch, Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*)
-disable-model-invocation: true
 ---
 
 # Implement
@@ -31,7 +30,7 @@ Arguments: $ARGUMENTS
 
 Check in this order. Collect what fails into questions for the Q&A.
 
-1. **Source.** A plan with `Status: draft` is not approved: stop and point to `sdlc:plan`. A plan with no status line counts as approved. Every phase or fix batch has steps, acceptance criteria and tests. No phase depends on an Open Question that is not `deferred`, or on an Assumption with `confirmed: no`.
+1. **Source.** A plan with `Status: draft` is not approved: stop and point to `sdlc:plan`. `approved (auto)` and a plan with no status line count as approved. Every phase or fix batch has steps, acceptance criteria and tests. No phase depends on an Open Question that is not `deferred`, or on an Assumption with `confirmed: no`.
 2. **Working tree.** It is clean. If not, ask right away: commit, stash or stop.
 3. **Verification command.** Find how the project verifies changes. Look in project docs (`CLAUDE.md`, README, contributing guide), then the manifest or build config (e.g. `package.json`, `Makefile`), then CI config. Prefer one command that runs everything. Never invent or narrow one. If none exists, ask.
 4. **Commit convention.** Detect it from repository config or docs, else from recent `git log`. Default: `<type>(<scope>): <summary>`.
@@ -48,18 +47,21 @@ Check in this order. Collect what fails into questions for the Q&A.
 - If nothing blocks, say so in one line and go on. Do not ask permission to skip.
 - Show the setup: phase count, branch, verification command, commit convention, project skills, decisions. Wait for approval.
 - After approval: check out the branch, or create it from the current one. For a plan source, create `implementation-summary.md` next to the plan from `${CLAUDE_PLUGIN_ROOT}/skills/implement/template.md` and write the decisions into it. For a review source, reuse the existing summary.
+- Baseline: for a plan source, if a phase asks for `runtime` evidence of something visible, run the `runtime-verifier` agent in `baseline` mode before the first phase. Pass: the plan path, those phases, the evidence directory `<dir>/evidence/` and the project skills. On `not available`, record the reason in the summary and go on.
 
 ## Phase loop
 
 Run phases in plan order. Respect `Depends on`. For each phase:
 
 1. **Start.** Mark the phase `[in progress]`. Show its title, gain, steps, acceptance criteria and tests. Ask: start, or add notes first.
-2. **Develop.** Delegate to the `developer` agent. Pass: the phase text, the decisions, the paths to guidelines, discovery and extra context, the project skills, and the verification command. Use one developer agent per phase. Continue the same agent for fixes and pass it the findings.
+2. **Develop.** Delegate to the `developer` agent. Pass: the phase text, the decisions, the paths to guidelines, discovery and extra context, the project skills, and the verification command. Use one developer agent per phase. Continue the same agent for fixes and pass it the findings, except where Verify says to start a new one.
    - On `blocked`: show the reason and the proposed alternative. Ask the user to decide. Record the decision in the summary. Continue the agent with it.
    - On `feedback`: the user answered one of the agent's tool calls directly. Show the User feedback block as it is. Ask the user: proceed as proposed, adjust, or stop. Record the decision in the summary as `user: <decision>`. Continue the same agent with it. Never answer for the user, and never overrule the feedback from the plan.
    - A question, proposal or change you did not ask for in any other report also goes to the user before you answer it.
 3. **Verify.** Delegate to the `verifier` agent. Pass: the phase text, the verification command, the guideline paths, the project skills and the decisions. Do not pass the developer's report.
-   - On `fail`: send the findings to the developer. Max 2 fix rounds, then ask the user.
+   - On `fail`: max 2 fix rounds, then ask the user.
+     - Round 1: send the findings to the same developer agent.
+     - Round 2: start a new `developer` agent with `model: opus`. Pass what a new developer gets, plus the findings of both rounds, and say that partial changes exist. Use this agent for the rest of the phase.
 4. **Approve.** Show the developer's report, the verifier's report and the proposed commit message. Ask: approve and commit, request changes, or stop.
    - On request changes: send the feedback to the developer. Go back to Verify.
    - With a review source the user may also choose `auto`: commit the remaining batches without asking while the verifier passes. A `fail` after the fix rounds or a `blocked` report still asks.
@@ -87,6 +89,10 @@ If the plan has markers or the summary exists:
 1. Set the summary status to `done`. Complete Follow-ups.
 2. Show the summary in a few lines.
 3. Suggest the next step: `sdlc:review`. For a review source, say to run `sdlc:review` again.
+
+## Auto mode
+
+Only when the arguments contain `--auto`. `sdlc:auto` sets it. Read `${CLAUDE_PLUGIN_ROOT}/skills/auto/policy.md` and follow its Rules and its Implement section. They replace the setup approval, the phase start question and the commit approval of this skill. Everything else here still applies.
 
 ## Rules
 

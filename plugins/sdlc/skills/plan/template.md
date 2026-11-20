@@ -5,7 +5,7 @@ Structure of `implementation-plan.md`. Keep every section. Write `none` if empty
 ```md
 # Implementation Plan: <feature name> (<ticket key if any>)
 
-Status: draft | approved
+Status: draft | approved | approved (auto)
 
 ## Overview
 - <2-3 bullets: what is built and why>
@@ -19,8 +19,11 @@ Status: draft | approved
 - Source: `context-discovery.md`
 - Guidelines to follow: <paths or "none">
 
+## Core changes
+- <public contract, integration with another system or dependency, data or schema change>
+
 ## Assumptions
-- <assumption> (confirmed: yes/no)
+- <assumption> (confirmed: yes/no/auto)
 
 ## Risks
 - <risk> - <what to do about it>
@@ -41,6 +44,8 @@ Status: draft | approved
 **Depends on:** <phase or step refs, or none>
 
 **Tests:** <kinds and level expected: unit, integration, e2e, manual>
+
+**Evidence:** checks | runtime: <what to observe in the running system, each state>
 
 **Acceptance criteria:**
 - [ ] <testable, specific criterion>

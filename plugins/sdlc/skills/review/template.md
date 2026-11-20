@@ -11,12 +11,13 @@ Structure of `implementation-review.md`. Keep every section. Write `none` if emp
 - Reviewed at: `<commit>`
 - Round: <n>
 - Verification: `<command>` - pass | fail
+- Evidence: checks only | runtime | runtime with captures | not available: <reason>
 - Status: blocked | changes requested | approved | approved with follow-ups
 
 ## Requirements
 | Id | Requirement | Source | Result | Evidence | Decision | Status |
 |---|---|---|---|---|---|---|
-| R1 | <requirement or acceptance criterion> | <discovery, plan, ticket or reference> | met \| partial \| missing \| differs \| deviates (<decision>) | `path:line` or gap | - \| open \| fix \| defer \| owner <who> | - \| open \| fixed `<commit>` |
+| R1 | <requirement or acceptance criterion> | <discovery, plan, ticket or reference> | met \| partial \| missing \| differs \| deviates (<decision>) | `path:line`, observation with capture path, or gap | - \| open \| fix \| defer \| owner <who> | - \| open \| fixed `<commit>` |
 
 ## Findings
 | Id | Area | Finding | Evidence | Proposed fix | Decision | Status |
